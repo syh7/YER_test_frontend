@@ -3,7 +3,10 @@ let requestTarget = "http://localhost:8082/";
 function newUser() {
     let req = new XMLHttpRequest();
     req.open("POST", requestTarget + "participants", true);
-    
+    req.responseType = "json";
+
+    req.onload = console.log(JSON.parse(this.response));
+    //openUser.bind(this, this.response)
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(getUserInput()));
 }
@@ -21,7 +24,6 @@ function getUserInput() {
 }
 
 function openUser(userId){
-    let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participant")
-    window.location.href = 'participant.html?id=' + userId;
+    console.log(userId);
+    //window.location.href = 'participant.html?id=' + userId;
 }
