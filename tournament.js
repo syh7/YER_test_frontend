@@ -6,15 +6,21 @@ let requestTarget = "http://localhost:8082/";
 load();
 
 function load(){
-    console.log(window.location.search);
+    let id = new URL(location.href).searchParams.get('id')
+    console.log(id);
+    let req = new XMLHttpRequest();
+    req.open("GET", requestTarget + "tournaments/" + id, true);
+    req.setRequestHeader("Content-type", "application/json");
+    req.onload = function(){
+        let tournament = JSON.parse(this.response);
+        console.log(tournament);
+        document.getElementById("tournamentName").innerHTML = tournament.name;
+        //document.getElementById("info").innerHTML = tournament.info;
+    };
+    req.send();
 }
 
-function getQueryVariable(variable) {
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
+//TODO
+function enrol(){
+    
 }
