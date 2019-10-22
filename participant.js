@@ -1,6 +1,8 @@
 let requestTarget = "http://localhost:8082/";
 let tournamentDiv = document.getElementById("tournaments");
 
+let tournaments;
+
 function searchTournament() {
     var search = document.getElementById("searchbar").value;
     console.log("Search: " + search);
@@ -8,7 +10,7 @@ function searchTournament() {
     req.onreadystatechange = function () {
         //xhttp.responseType = "application/json";
         if (this.readyState == 4 && this.status == 200) {
-            var tournaments = JSON.parse(req.responseText);
+            tournaments = JSON.parse(req.responseText);
             console.log(tournaments);
             var table = document.createElement("TABLE");
             for (var i = 0; i < tournaments.length; i++) {
@@ -23,7 +25,8 @@ function searchTournament() {
                 
                 let button = document.createElement('BUTTON');
                 button.innerHTML = "View";
-                button.onclick = openTournament(tournaments[i].id);
+                console.log("In onclick, id=: " + tournaments[i].id);
+                button.addEventListener('click', openTournament.bind(this, tournaments[i].id));
                 row.insertCell(4).appendChild(button);
 
             }
@@ -39,6 +42,7 @@ function searchTournament() {
 }
 
 function openTournament(tournamentId){
-    window.location.href = 'tournament/?id=' + tournamentId;
+    console.log("In function, id=: " + tournamentId);
+    window.location.href = 'tournament.html?id=' + tournamentId;
 
 }
