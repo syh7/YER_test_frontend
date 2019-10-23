@@ -22,6 +22,9 @@ function getUserInput() {
     participant.playerLevel = document.getElementById("playerLevel").value;
     participant.dateOfBirth = document.getElementById("dateOfBirth").value;
     participant.leagueNumber = document.getElementById("leagueNumber").value;
+    let gender = $("input[type='radio'][name='gender']:checked").val();
+    participant.isMale = gender == "male";
+    console.log(JSON.stringify(participant));
     return participant;
 }
 

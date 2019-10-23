@@ -2,6 +2,7 @@
     <head>
         <title>New User</title>
         <link rel="stylesheet" src="index.css">
+        <script src="jquery-3.4.1.min.js"></script>
     </head>
 
     <body>
@@ -24,7 +25,9 @@
                 <option value="1"> 1e divisie </option>
                 <option value="0"> Ere-divisie </option>
             </select> <br>
-            League number: <input type="text" id="leagueNumber">
+            League number: <input type="text" id="leagueNumber"> <br>
+            <p><input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female<br></p>
             <button id="newUser" onclick="newUser()">Submit</button>
         
         </div>

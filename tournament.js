@@ -2,6 +2,7 @@
             get document etc info .innerhtml = tournament.info */
 
 let requestTarget = "http://localhost:8082/";
+let tournament = {};
 
 load();
 
@@ -12,15 +13,15 @@ function load(){
     req.open("GET", requestTarget + "tournaments/" + id, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
-        let tournament = JSON.parse(this.response);
+        tournament = JSON.parse(this.response);
         console.log(tournament);
         document.getElementById("tournamentName").innerHTML = tournament.name;
-        //document.getElementById("info").innerHTML = tournament.info;
+        document.getElementById("info").innerHTML = tournament.description;
     };
     req.send();
 }
 
-//TODO
 function enrol(){
-    
+    console.log("In enrol(): " + tournament.id);
+    window.location.href = "enrolment.html?id=" + tournament.id + "&t=" + tournament.name;
 }
