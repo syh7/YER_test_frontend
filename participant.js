@@ -11,14 +11,18 @@ function searchTournament() {
         //xhttp.responseType = "application/json";
         if (this.readyState == 4 && this.status == 200) {
             tournaments = JSON.parse(req.responseText);
-            console.log(tournaments);
+            console.log("Tournaments: " + tournaments);
             var table = document.createElement("TABLE");
             for (var i = 0; i < tournaments.length; i++) {
                 var row = table.insertRow(i);
                 row.insertCell(0).innerHTML = tournaments[i].name;
                 var cell = row.insertCell(1);
-                for (var j = 0; j < tournaments[i].categories.length; j++) {                  
-                    cell.innerHTML += tournaments[i].categories[j] + ", ";
+                if(tournaments[i].categories == null){
+                    cell.innerHTML = "No categories known yet";
+                } else {
+                    for (var j = 0; j < tournaments[i].categories.length; j++) {                  
+                        cell.innerHTML += tournaments[i].categories[j] + ", ";
+                    }
                 }
                 row.insertCell(2).innerHTML = tournaments[i].startDate;
                 row.insertCell(3).innerHTML = tournaments[i].enrolDate;
