@@ -15,7 +15,7 @@ function load(){
         let tournament = JSON.parse(this.response);
         console.log(tournament);
         document.getElementById("tournamentName").innerHTML = tournament.name;
-        //document.getElementById("info").innerHTML = tournament.info;
+        document.getElementById("info").innerHTML = tournament.description;
     };
     req.send();
 }
