@@ -7,32 +7,34 @@
 <body>
     <div id="main">  
         <h3 id="name"></h3>
-        <p id="disciplines">
-            <select class="discipline">
-                <option value="DEFAULT" class="defaultDiscipline">------------</option>
-                <option value="MENSINGLES" class="men">Men's Singles</option>
-                <option value="MENSDOUBLES" class="men">Men's Doubles</option>
-                <option value="WOMENSINGLES" class="women">Women's Singles</option>
-                <option value="WOMENDOUBLES" class="women">Women's Doubles</option>
-                <option value="MIXEDDOUBLES">Mixed Doubles</option>
-            </select>
-            
-            <select class="playerLevel">
-                    <option value="9"> 9e divisie </option>
-                    <option value="8"> 8e divisie </option>
-                    <option value="7"> 7e divisie </option>
-                    <option value="6"> 6e divisie </option>
-                    <option value="5"> 5e divisie </option>
-                    <option value="4"> 4e divisie </option>
-                    <option value="3"> 3e divisie </option>
-                    <option value="2"> 2e divisie </option>
-                    <option value="1"> 1e divisie </option>
-                    <option value="0"> Ere-divisie </option>
-            </select>
+        <div id="disciplineDiv">
+            <p class="disciplines" id="disciplineRow1">
+                <select class="discipline">
+                    <option value="DEFAULT" class="defaultDiscipline">------------</option>
+                    <option value="MENSINGLES" class="men">Men's Singles</option>
+                    <option value="MENSDOUBLES" class="men">Men's Doubles</option>
+                    <option value="WOMENSINGLES" class="women">Women's Singles</option>
+                    <option value="WOMENDOUBLES" class="women">Women's Doubles</option>
+                    <option value="MIXEDDOUBLES">Mixed Doubles</option>
+                </select>
+                
+                <select class="playerLevel">
+                        <option value="9"> 9e divisie </option>
+                        <option value="8"> 8e divisie </option>
+                        <option value="7"> 7e divisie </option>
+                        <option value="6"> 6e divisie </option>
+                        <option value="5"> 5e divisie </option>
+                        <option value="4"> 4e divisie </option>
+                        <option value="3"> 3e divisie </option>
+                        <option value="2"> 2e divisie </option>
+                        <option value="1"> 1e divisie </option>
+                        <option value="0"> Ere-divisie </option>
+                </select>
 
-            <input class="leagueNumber" placeholder="league number partner">
-            
-        </p>
+                <input class="leagueNumber" placeholder="league number partner">
+                
+            </p>
+        </div>
         <button id="submitButton" onclick="submit()">Enrol</button> <br>
     </div>
 </body>

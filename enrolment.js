@@ -7,8 +7,14 @@ function load() {
     console.log(tournament);
     console.log("Tournament.id: " + tournament.id);
     document.getElementById("name").innerHTML = tournament.name;
-    if(tournament.maxDisciplines > 0){
-        document.getElementById("disciplines").cloneNode
+    if(tournament.maxDisciplines > 1){
+        console.log("Max Disciplines: " + tournament.maxDisciplines);
+        
+        for(let i = 1; i < tournament.maxDisciplines; i++){
+            console.log("Building " + i + " clone");
+            let disc = $("#disciplineRow1").clone();
+            disc.appendTo($("#disciplineDiv"));
+        }
     }
 }
 

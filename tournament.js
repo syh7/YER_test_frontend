@@ -25,5 +25,5 @@ function load(){
 function enrol(){
     console.log("In enrol(): " + tournament.id);
     //window.localStorage.setItem("tournament", tournament);
-    //window.location.href = "enrolment.html?id=" + tournament.id;
+    window.location.href = "enrolment.html";
 }
