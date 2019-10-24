@@ -18,6 +18,19 @@ function load() {
     }
 }
 
+function checkPartner(disciplineDropdown){
+    console.log(disciplineDropdown);
+    console.log(disciplineDropdown.value);
+    if(disciplineDropdown.value.includes("SINGLE")){
+        console.log("true");
+        $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = true;
+        $(disciplineDropdown).siblings(".leagueNumber")[0].value="";
+    } else {
+        console.log("false");
+        $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = false;
+    }
+}
+
 function submit(){
     
 }

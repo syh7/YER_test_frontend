@@ -9,13 +9,13 @@
         <h3 id="name"></h3>
         <div id="disciplineDiv">
             <p class="disciplines" id="disciplineRow1">
-                <select class="discipline">
+                <select class="discipline" id="disciplineSelect1" oninput="checkPartner(this)">
                     <option value="DEFAULT" class="defaultDiscipline">------------</option>
-                    <option value="MENSINGLES" class="men">Men's Singles</option>
-                    <option value="MENSDOUBLES" class="men">Men's Doubles</option>
-                    <option value="WOMENSINGLES" class="women">Women's Singles</option>
-                    <option value="WOMENDOUBLES" class="women">Women's Doubles</option>
-                    <option value="MIXEDDOUBLES">Mixed Doubles</option>
+                    <option value="MENSINGLES" class="men single">Men's Singles</option>
+                    <option value="MENSDOUBLES" class="men double">Men's Doubles</option>
+                    <option value="WOMENSINGLES" class="women single">Women's Singles</option>
+                    <option value="WOMENDOUBLES" class="women double">Women's Doubles</option>
+                    <option value="MIXEDDOUBLES" class="double">Mixed Doubles</option>
                 </select>
                 
                 <select class="playerLevel">
