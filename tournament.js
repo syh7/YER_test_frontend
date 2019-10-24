@@ -14,6 +14,7 @@ function load(){
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         tournament = JSON.parse(this.response);
+        window.localStorage.setItem("tournament", this.response);
         console.log(tournament);
         document.getElementById("tournamentName").innerHTML = tournament.name;
         document.getElementById("info").innerHTML = tournament.description;
@@ -23,5 +24,6 @@ function load(){
 
 function enrol(){
     console.log("In enrol(): " + tournament.id);
-    window.location.href = "enrolment.html?id=" + tournament.id + "&t=" + tournament.name;
+    //window.localStorage.setItem("tournament", tournament);
+    //window.location.href = "enrolment.html?id=" + tournament.id;
 }

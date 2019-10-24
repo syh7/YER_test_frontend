@@ -1,12 +1,12 @@
 let requestTarget = "http://localhost:8082/";
-
+let tournament = {};
 
 load()
 function load() {
-    let id = new URL(location.href).searchParams.get('id')
-    let name = new URL(location.href).searchParams.get('t')
-    console.log("Tournament.id: " + id);
-    document.getElementById("name").innerHTML = name;    
+    tournament = JSON.parse(window.localStorage.getItem("tournament"));
+    console.log(tournament);
+    console.log("Tournament.id: " + tournament.id);
+    document.getElementById("name").innerHTML = tournament.name;
 }
 
 function submit(){
