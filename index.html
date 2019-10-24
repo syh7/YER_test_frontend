@@ -1,13 +1,17 @@
 <html>
     <head>
-        <title>Frontend index</title>
-        <link rel="stylesheet" href="index.css">
+        <title>Index</title>
+        <link rel="stylesheet" src="index.css">
+        <script src="jquery-3.4.1.min.js"></script>
     </head>
     
     <body>
-        <div id="participantsDiv">
-            <button id="showTablesBtn" onclick="getAllParticipants()">Show all participants</button>
-            <button id="addParticipant" onclick="sendParticipant(makeNewParticipant())">Add new participant</button>
+        <div id="main">
+            Email: <input type="text" id="userName"> <br>
+            Password: <input type="password" id="password"> <br>
+            <button id="showTablesBtn" onclick="signIn()">SIGN IN</button> <br>
+            <button id="newUser" onclick="location.href='newUser.html'">NEW USER</button>
+            <button id="newAdmin" onclick="location.href='newAdmin.html'">NEW ADMIN</button>
         </div>
     </body>
     
