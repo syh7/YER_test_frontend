@@ -14,7 +14,7 @@ function load(){
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         tournament = JSON.parse(this.response);
-        window.localStorage.setItem("tournament", this.response);
+        localStorage.setItem("tournament", this.response);
         console.log(tournament);
         document.getElementById("tournamentName").innerHTML = tournament.name;
         document.getElementById("info").innerHTML = tournament.description;
