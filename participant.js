@@ -14,32 +14,44 @@ function searchTournament() {
             tournaments = JSON.parse(req.responseText);
             console.log("Tournaments: " + tournaments);
             var table = document.createElement("TABLE");
-            for (var i = 0; i < tournaments.length; i++) {
-                var row = table.insertRow(i);
-                row.insertCell(0).innerHTML = tournaments[i].name;
-                var cell = row.insertCell(1);
-                if(tournaments[i].categories == null){
-                    cell.innerHTML = "No categories known yet";
-                } else {
-                    for (var j = 0; j < tournaments[i].categories.length; j++) {                  
-                        cell.innerHTML += tournaments[i].categories[j] + ", ";
+            if(tournaments.length > 0){
+                for (var i = 0; i < tournaments.length; i++) {
+                    var row = table.insertRow(i);
+                    row.insertCell(0).innerHTML = tournaments[i].name;
+                    var cell = row.insertCell(1);
+                    if(tournaments[i].levels == null){
+                        cell.innerHTML = "No categories known yet";
+                    } else {
+                        var string = "";
+                        for (var j = 0; j < tournaments[i].levels.length; j++) {
+                            string = string.concat(tournaments[i].levels[j] + ", ");
+                            console.log("String: " + string);
+                        }
+                        cell.innerHTML = string.substring(0, string.length -2);
                     }
+                    row.insertCell(2).innerHTML = tournaments[i].startDate;
+                    row.insertCell(3).innerHTML = tournaments[i].enrolDate;
+                    
+                    let button = document.createElement('BUTTON');
+                    button.innerHTML = "View";
+                    console.log("In onclick, id=: " + tournaments[i].id);
+                    button.addEventListener('click', openTournament.bind(this, tournaments[i].id));
+                    row.insertCell(4).appendChild(button);
+
                 }
-                row.insertCell(2).innerHTML = tournaments[i].startDate;
-                row.insertCell(3).innerHTML = tournaments[i].enrolDate;
                 
-                let button = document.createElement('BUTTON');
-                button.innerHTML = "View";
-                console.log("In onclick, id=: " + tournaments[i].id);
-                button.addEventListener('click', openTournament.bind(this, tournaments[i].id));
-                row.insertCell(4).appendChild(button);
+                var header = table.createTHead();
+                row = header.insertRow(0);
+                row.insertCell(0).innerHTML = "<b>Tournament</b>";
+                row.insertCell(1).innerHTML = "<b>Player Levels</b>";
+                row.insertCell(2).innerHTML = "<b>Start Date</b>";
+                row.insertCell(3).innerHTML = "<b>Enrol Date</b>";
 
+                if(tournamentDiv.hasChildNodes()){
+                    tournamentDiv.removeChild(tournamentDiv.children[0]);
+                }
+                tournamentDiv.appendChild(table);
             }
-            if(tournamentDiv.hasChildNodes()){
-                tournamentDiv.removeChild(tournamentDiv.children[0]);
-            }
-            tournamentDiv.appendChild(table);
-
         }
     }
     req.open("GET", requestTarget + "tournaments/?mode=contains&search=" + search, true);
