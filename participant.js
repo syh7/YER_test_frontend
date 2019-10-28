@@ -30,13 +30,14 @@ function searchTournament() {
                         cell.innerHTML = string.substring(0, string.length -2);
                     }
                     row.insertCell(2).innerHTML = tournaments[i].startDate;
-                    row.insertCell(3).innerHTML = tournaments[i].enrolDate;
+                    row.insertCell(3).innerHTML = tournaments[i].endDate;
+                    row.insertCell(4).innerHTML = tournaments[i].enrolDate;
                     
                     let button = document.createElement('BUTTON');
                     button.innerHTML = "View";
                     console.log("In onclick, id=: " + tournaments[i].id);
                     button.addEventListener('click', openTournament.bind(this, tournaments[i].id));
-                    row.insertCell(4).appendChild(button);
+                    row.insertCell(5).appendChild(button);
 
                 }
                 
@@ -45,7 +46,8 @@ function searchTournament() {
                 row.insertCell(0).innerHTML = "<b>Tournament</b>";
                 row.insertCell(1).innerHTML = "<b>Player Levels</b>";
                 row.insertCell(2).innerHTML = "<b>Start Date</b>";
-                row.insertCell(3).innerHTML = "<b>Enrol Date</b>";
+                row.insertCell(3).innerHTML = "<b>End Date<b>";
+                row.insertCell(4).innerHTML = "<b>Enrol Date</b>";
 
                 if(tournamentDiv.hasChildNodes()){
                     tournamentDiv.removeChild(tournamentDiv.children[0]);
