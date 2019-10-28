@@ -1,7 +1,7 @@
 let requestTarget = "http://localhost:8082/";
 let participant = {};
 
-function newUser() {
+function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
         req.open("POST", requestTarget + "participants", true);
@@ -13,7 +13,7 @@ function newUser() {
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
     } else {
-        alert("Passwords do not match");
+        alert("Passwords do not matchTEST");
     }
 }
 
@@ -32,18 +32,11 @@ function getUserInput() {
 }
 
 function checkPassword(){
-    if(document.getElementById("password") == document.getElementById("passwordConfirm")){
+    if(document.getElementById("password").value == document.getElementById("passwordConfirm").value){
         return true;
     } else {
         return false;
     }
-}
-
-//TODO
-function checkFilledIn(){
-    
-        console.log(Object.keys(participant));
-    
 }
 
 function openUser(userId){
