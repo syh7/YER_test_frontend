@@ -41,5 +41,6 @@ function checkPassword(){
 
 function openUser(userId){
     console.log("In openUser(): " + userId);
+    alert("In openUser()");
     window.location.href = 'participant.html?id=' + userId;
 }
