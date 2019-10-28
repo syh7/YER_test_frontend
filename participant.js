@@ -1,6 +1,7 @@
 let requestTarget = "http://localhost:8082/";
 let tournamentDiv = document.getElementById("tournaments");
 let tournaments;
+let participant = {};
 
 load();
 
@@ -73,8 +74,9 @@ function load(){
     req.open("GET", requestTarget + "participants/" + id, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
-        let participant = JSON.parse(this.response);
-        console.log(participant);
+        participant = JSON.parse(this.response);
+        localStorage.setItem("participant", this.response);
+        console.log("Participant= " + localStorage.getItem("participant"));
         document.getElementById("name").innerHTML = participant.firstName + " " + participant.lastName;
         
     };

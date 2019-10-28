@@ -1,11 +1,15 @@
 let requestTarget = "http://localhost:8082/";
 let tournament = {};
+let enrolment = {};
+let participant = {};
 
 load()
 function load() {
     tournament = JSON.parse(localStorage.getItem("tournament"));
+    participant = JSON.parse(localStorage.getItem("participant"));
     console.log(tournament);
-    console.log("Tournament.id: " + tournament.id);
+    console.log("Tournament.id: = " + tournament.id);
+    console.log("Participant.firstName = " + participant.firstName)
     document.getElementById("name").innerHTML = tournament.name;
     if(tournament.maxDisciplines > 1){
         console.log("Max Disciplines: " + tournament.maxDisciplines);
@@ -13,6 +17,8 @@ function load() {
         for(let i = 1; i < tournament.maxDisciplines; i++){
             console.log("Building " + i + " clone");
             let disc = $("#disciplineRow1").clone();
+    //TOFIX
+            disc.id = "disciplineRow2";
             disc.appendTo($("#disciplineDiv"));
         }
     }
@@ -32,5 +38,15 @@ function checkPartner(disciplineDropdown){
 }
 
 function submit(){
+    buildJSON();
+}
+
+function buildJSON(){
+    let enrolments = [];
+    for(let i = 0; i < tournament.maxDisciplines; i++){
+        //enrolment.partnerLeagueNumber = ;
+    }
+    console.log(JSON.stringify(participant.id + enrolments));
+
     
 }

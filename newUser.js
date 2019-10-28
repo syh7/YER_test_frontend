@@ -11,7 +11,8 @@ function newParticipant() {
             openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
-        req.send(JSON.stringify(getUserInput()));
+        participant = req.send(JSON.stringify(getUserInput()));
+        localStorage.setItem("participant", participant);
     } else {
         alert("Passwords do not matchTEST");
     }

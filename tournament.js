@@ -15,7 +15,7 @@ function load(){
     req.onload = function(){
         tournament = JSON.parse(this.response);
         localStorage.setItem("tournament", this.response);
-        console.log(tournament);
+        console.log(localStorage.getItem("tournament"));
         document.getElementById("tournamentName").innerHTML = tournament.name;
         document.getElementById("info").innerHTML = tournament.description;
     };
