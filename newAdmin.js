@@ -59,7 +59,7 @@ function getUserInput() {
 
 function loadUserInput() {
     console.log(admin.email);
-    document.getElementById("firstName").value = admin.name;
+    document.getElementById("name").value = admin.name;
     document.getElementById("email").value = admin.email;
     document.getElementById("password").value = admin.password;
 }
@@ -75,7 +75,7 @@ function checkPassword(){
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("PUT", requestTarget + "admins/" + participant.id, true);
+        req.open("PUT", requestTarget + "admins/" + admin.id, true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
@@ -83,7 +83,7 @@ function update(){
             openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
-        participant = req.send(JSON.stringify(getUserInput()));
+        admin = req.send(JSON.stringify(getUserInput()));
         localStorage.setItem("admin", admin);
     } else {
         alert("Passwords do not matchTEST");
