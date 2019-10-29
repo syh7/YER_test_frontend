@@ -27,11 +27,13 @@ function newAdmin() {
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
+            localStorage.setItem("admin", admin);
+            alert(admin.name + " aangemaakt");
             openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
-        admin = req.send(JSON.stringify(getUserInput()));
-        localStorage.setItem("admin", admin);
+        req.send(JSON.stringify(getUserInput()));
+        
     } else {
         alert("Passwords do not matchTEST");
     }

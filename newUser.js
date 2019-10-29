@@ -26,12 +26,12 @@ function newParticipant() {
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
-            alert(participant.firstName + " " + participant.lastName + "aangemaakt");
+            localStorage.setItem("participant", participant);
+            alert(participant.firstName + " " + participant.lastName + " aangemaakt");
             openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
-        localStorage.setItem("participant", participant);
     } else {
         alert("Passwords do not matchTEST");
     }
