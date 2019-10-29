@@ -1,20 +1,24 @@
 let requestTarget = "http://localhost:8082/";
+let participant = {};
 
-function newUser() {
-    let req = new XMLHttpRequest();
-    req.open("POST", requestTarget + "participants", true);
-  //  req.responseType = "json";
-    
-    req.onload = function() {
-        console.log(JSON.parse(this.responseText).id);
-        openUser(JSON.parse(this.responseText).id);
+function newParticipant() {
+    if(checkPassword()){  
+        let req = new XMLHttpRequest();
+        req.open("POST", requestTarget + "participants", true);
+        //req.responseType = "json";
+        req.onload = function() {
+            console.log(JSON.parse(this.responseText).id);
+            openUser(JSON.parse(this.responseText).id);
+        }
+        req.setRequestHeader("Content-Type", "application/json");
+        participant = req.send(JSON.stringify(getUserInput()));
+        localStorage.setItem("participant", participant);
+    } else {
+        alert("Passwords do not matchTEST");
     }
-    req.setRequestHeader("Content-Type", "application/json");
-    req.send(JSON.stringify(getUserInput()));
 }
 
 function getUserInput() {
-    let participant = {};
     participant.email = document.getElementById("email").value;
     participant.password = document.getElementById("password").value;
     participant.firstName = document.getElementById("firstName").value;
@@ -28,7 +32,16 @@ function getUserInput() {
     return participant;
 }
 
+function checkPassword(){
+    if(document.getElementById("password").value == document.getElementById("passwordConfirm").value){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function openUser(userId){
     console.log("In openUser(): " + userId);
+    alert("In openUser()");
     window.location.href = 'participant.html?id=' + userId;
 }
