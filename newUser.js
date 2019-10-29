@@ -1,5 +1,5 @@
 let requestTarget = "http://localhost:8082/";
-let participant;
+let participant = {};
 let urlId;
 onLoad();
 
@@ -8,7 +8,6 @@ function onLoad(){
     urlId = new URL(location.href).searchParams.get('id');
     if(urlId == null){
         console.log("No user");
-        participant = {};
     } else {
         getParticipant();
         console.log(participant);
@@ -23,14 +22,15 @@ function onLoad(){
 function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("POST", requestTarget + "participants", true);
+        req.open("POST", requestTarget + "participants", false);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
+            alert(participant.firstName + " " + participant.lastName + "aangemaakt");
             openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
-        participant = req.send(JSON.stringify(getUserInput()));
+        req.send(JSON.stringify(getUserInput()));
         localStorage.setItem("participant", participant);
     } else {
         alert("Passwords do not matchTEST");
