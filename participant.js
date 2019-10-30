@@ -82,3 +82,7 @@ function load(){
     };
     req.send();
 }
+
+function editUser(){
+    window.location.href = 'newUser.html?id=' + participant.id;
+}
