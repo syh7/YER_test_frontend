@@ -5,21 +5,26 @@ let participant = {};
 
 load();
 
+/*Checks the search field and builds a table containing matching tournaments
+*/
 function searchTournament() {
     var search = document.getElementById("searchbar").value;
     console.log("Search: " + search);
     let req = new XMLHttpRequest();
     req.onreadystatechange = function () {
-        //xhttp.responseType = "application/json";
+        //Get tournaments from backend
         if (this.readyState == 4 && this.status == 200) {
             tournaments = JSON.parse(req.responseText);
             console.log("Tournaments: " + tournaments);
             var table = document.createElement("TABLE");
+            //Build table
             if(tournaments.length > 0){
+                //Build rows
                 for (var i = 0; i < tournaments.length; i++) {
                     var row = table.insertRow(i);
                     row.insertCell(0).innerHTML = tournaments[i].name;
                     var cell = row.insertCell(1);
+                    //Check number of categories
                     if(tournaments[i].levels == null){
                         cell.innerHTML = "No categories known yet";
                     } else {
@@ -41,7 +46,7 @@ function searchTournament() {
                     row.insertCell(5).appendChild(button);
 
                 }
-                
+                //Build headers
                 var header = table.createTHead();
                 row = header.insertRow(0);
                 row.insertCell(0).innerHTML = "<b>Tournament</b>";
@@ -49,7 +54,7 @@ function searchTournament() {
                 row.insertCell(2).innerHTML = "<b>Start Date</b>";
                 row.insertCell(3).innerHTML = "<b>End Date<b>";
                 row.insertCell(4).innerHTML = "<b>Enrol Date</b>";
-
+                //Refresh table
                 if(tournamentDiv.hasChildNodes()){
                     tournamentDiv.removeChild(tournamentDiv.children[0]);
                 }
@@ -61,12 +66,14 @@ function searchTournament() {
     req.send();
 }
 
+//Redirect to tournament page
 function openTournament(tournamentId){
     console.log("In function, id=: " + tournamentId);
     window.location.href = 'tournament.html?id=' + tournamentId;
 
 }
 
+//Loads the participant from the backend
 function load(){
     let id = new URL(location.href).searchParams.get('id')
     console.log(id);
@@ -83,6 +90,7 @@ function load(){
     req.send();
 }
 
+//Redirect to newUser page
 function editUser(){
     window.location.href = 'newUser.html?id=' + participant.id;
 }

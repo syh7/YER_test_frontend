@@ -3,7 +3,9 @@ let admin;
 let urlId;
 onLoad();
 
-
+/*Check if user is already logged in, in that case fill in their
+* data and change the function to updating
+*/
 function onLoad(){
     urlId = new URL(location.href).searchParams.get('id');
     if(urlId == null){
@@ -20,6 +22,8 @@ function onLoad(){
     }
 }
 
+/*Post a new Admin to the backend, also saves admindata locally
+*/
 function newAdmin() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
@@ -39,6 +43,8 @@ function newAdmin() {
     }
 }
 
+/*Gets admindata from the backend
+*/
 function getAdmin(){
     let req = new XMLHttpRequest();
     req.open("GET", requestTarget + "admins/" + urlId, false);
@@ -51,6 +57,8 @@ function getAdmin(){
     req.send();
 }
 
+/*Puts data from inputfields into admin object
+*/
 function getUserInput() {
     admin.name = document.getElementById("name").value;
     admin.email = document.getElementById("email").value;
@@ -59,6 +67,8 @@ function getUserInput() {
     return admin;
 }
 
+/*Loads data from admin object into inputfields
+*/
 function loadUserInput() {
     console.log(admin.email);
     document.getElementById("name").value = admin.name;
@@ -66,6 +76,8 @@ function loadUserInput() {
     document.getElementById("password").value = admin.password;
 }
 
+/*Checks if passwords in inputfields match
+*/
 function checkPassword(){
     if(document.getElementById("password").value == document.getElementById("passwordConfirm").value){
         return true;
@@ -74,6 +86,8 @@ function checkPassword(){
     }
 }
 
+/*Updates the database with new admin data
+*/
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
@@ -92,6 +106,8 @@ function update(){
     }
 }
 
+/*Redirect to admin page
+*/
 function openUser(userId){
     console.log("In openUser(): " + userId);
     alert("In openUser()");

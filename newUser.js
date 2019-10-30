@@ -3,7 +3,9 @@ let participant = {};
 let urlId;
 onLoad();
 
-
+/*Check if user is already logged in, in that case fill in their
+* data and change the function to updating
+*/
 function onLoad(){
     urlId = new URL(location.href).searchParams.get('id');
     if(urlId == null){
@@ -19,6 +21,9 @@ function onLoad(){
     }
 }
 
+/*Post a new Participant to the backend, also saves 
+* participantdata locally
+*/
 function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
@@ -37,6 +42,8 @@ function newParticipant() {
     }
 }
 
+/*Gets participantdata from the backend
+*/
 function getParticipant(){
     let req = new XMLHttpRequest();
     req.open("GET", requestTarget + "participants/" + urlId, false);
@@ -49,6 +56,8 @@ function getParticipant(){
     req.send();
 }
 
+/*Puts data from inputfields into participant object
+*/
 function getUserInput() {
     participant.email = document.getElementById("email").value;
     participant.password = document.getElementById("password").value;
@@ -63,6 +72,8 @@ function getUserInput() {
     return participant;
 }
 
+/*Loads data from participant object into inputfields
+*/
 function loadUserInput() {
     console.log(participant.email);
     document.getElementById("email").value = participant.email;
@@ -80,6 +91,8 @@ function loadUserInput() {
     }
 }
 
+/*Checks if passwords in inputfields match
+*/
 function checkPassword(){
     if(document.getElementById("password").value == document.getElementById("passwordConfirm").value){
         return true;
@@ -88,6 +101,8 @@ function checkPassword(){
     }
 }
 
+/*Updates the database with new participant data
+*/
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
@@ -106,6 +121,8 @@ function update(){
     }
 }
 
+/*Redirect to participant page
+*/
 function openUser(userId){
     console.log("In openUser(): " + userId);
     //alert("In openUser()");

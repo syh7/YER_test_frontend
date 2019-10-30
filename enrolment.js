@@ -4,6 +4,10 @@ let enrolment = {};
 let participant = {};
 
 load()
+
+/* Load tournament and participant data
+*  Displays # of enrolmentforms equal to maxDisciplines
+*/
 function load() {
     tournament = JSON.parse(localStorage.getItem("tournament"));
     participant = JSON.parse(localStorage.getItem("participant"));
@@ -24,6 +28,8 @@ function load() {
     }
 }
 
+/* Disables partner inputfield if it is a singles discipline
+*/
 function checkPartner(disciplineDropdown){
     console.log(disciplineDropdown);
     console.log(disciplineDropdown.value);
@@ -37,10 +43,15 @@ function checkPartner(disciplineDropdown){
     }
 }
 
+/* TODO
+*  Sends new enrolment to the backend 
+*/
 function submit(){
     buildJSON();
 }
 
+/*  Constructs the JSON file containing enrolmentDTO
+*/
 function buildJSON(){
     let enrolments = [];
     for(let i = 0; i < tournament.maxDisciplines; i++){
