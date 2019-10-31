@@ -24,6 +24,7 @@ function load() {
     //TOFIX
             disc.id = "disciplineRow2";
             disc.appendTo($("#disciplineDiv"));
+            console.log($("#disciplineDiv"));
         }
     }
 }
