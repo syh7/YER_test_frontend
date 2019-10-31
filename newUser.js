@@ -46,7 +46,7 @@ function newParticipant() {
 */
 function getParticipant(){
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participants/" + urlId, false);
+    req.open("GET", requestTarget + "participants/" + urlId  + "/newPassword", false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         participant = JSON.parse(this.response);
