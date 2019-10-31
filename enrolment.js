@@ -1,14 +1,65 @@
 let requestTarget = "http://localhost:8082/";
-
+let tournament = {};
+let enrolment = {};
+let participant = {};
 
 load()
+
+/* Load tournament and participant data
+*  Displays # of enrolmentforms equal to maxDisciplines
+*/
 function load() {
-    let id = new URL(location.href).searchParams.get('id')
-    let name = new URL(location.href).searchParams.get('t')
-    console.log("Tournament.id: " + id);
-    document.getElementById("name").innerHTML = name;    
+    tournament = JSON.parse(localStorage.getItem("tournament"));
+    participant = JSON.parse(localStorage.getItem("participant"));
+    console.log(tournament);
+    console.log("Tournament.id: = " + tournament.id);
+    console.log("Participant.firstName = " + participant.firstName)
+    document.getElementById("name").innerHTML = tournament.name;
+    if(tournament.maxDisciplines > 1){
+        console.log("Max Disciplines: " + tournament.maxDisciplines);
+        
+        for(let i = 1; i < tournament.maxDisciplines; i++){
+            console.log("Building " + i + " clone");
+            let disc = $("#disciplineRow1").clone();
+            console.log(disc);
+            disc[0].id = "disciplineRow" + (i + 1);
+            disc.appendTo($("#disciplineDiv"));
+            console.log($("#disciplineDiv"));
+        }
+    }
 }
 
+/* Disables partner inputfield if it is a singles discipline
+*/
+function checkPartner(disciplineDropdown){
+    console.log(disciplineDropdown);
+    console.log(disciplineDropdown.value);
+    if(disciplineDropdown.value.includes("SINGLE")){
+        console.log("true");
+        $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = true;
+        $(disciplineDropdown).siblings(".leagueNumber")[0].value="";
+    } else {
+        console.log("false");
+        $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = false;
+    }
+}
+
+/* TODO
+*  Sends new enrolment to the backend 
+*/
 function submit(){
+    alert(participant.firstName + " " + participant.lastName + " has enrolled!")
+    buildJSON();
+}
+
+/*  Constructs the JSON file containing enrolmentDTO
+*/
+function buildJSON(){
+    let enrolments = [];
+    for(let i = 0; i < tournament.maxDisciplines; i++){
+        //enrolment.partnerLeagueNumber = ;
+    }
+    console.log(JSON.stringify(participant.id + enrolments));
+
     
 }
