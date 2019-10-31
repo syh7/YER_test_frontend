@@ -21,9 +21,10 @@ function load() {
         for(let i = 1; i < tournament.maxDisciplines; i++){
             console.log("Building " + i + " clone");
             let disc = $("#disciplineRow1").clone();
-    //TOFIX
-            disc.id = "disciplineRow2";
+            console.log(disc);
+            disc[0].id = "disciplineRow" + (i + 1);
             disc.appendTo($("#disciplineDiv"));
+            console.log($("#disciplineDiv"));
         }
     }
 }
@@ -47,6 +48,7 @@ function checkPartner(disciplineDropdown){
 *  Sends new enrolment to the backend 
 */
 function submit(){
+    alert(participant.firstName + " " + participant.lastName + " has enrolled!")
     buildJSON();
 }
 

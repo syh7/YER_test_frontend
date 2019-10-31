@@ -91,7 +91,7 @@ function checkPassword(){
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("PUT", requestTarget + "admins/" + admin.id, true);
+        req.open("PUT", requestTarget + "admins/" + admin.id + "/newPassword", true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
