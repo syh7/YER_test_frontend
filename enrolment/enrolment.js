@@ -60,6 +60,4 @@ function buildJSON(){
         //enrolment.partnerLeagueNumber = ;
     }
     console.log(JSON.stringify(participant.id + enrolments));
-
-    
 }

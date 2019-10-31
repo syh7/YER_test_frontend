@@ -69,7 +69,7 @@ function searchTournament() {
 //Redirect to tournament page
 function openTournament(tournamentId){
     console.log("In function, id=: " + tournamentId);
-    window.location.href = 'tournament.html?id=' + tournamentId;
+    window.location.href = 'tournament/tournament.html?id=' + tournamentId;
 
 }
 
@@ -92,5 +92,5 @@ function load(){
 
 //Redirect to newUser page
 function editUser(){
-    window.location.href = 'newUser.html?id=' + participant.id;
+    window.location.href = 'newUser/newUser.html?id=' + participant.id;
 }
