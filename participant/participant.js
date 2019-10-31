@@ -27,12 +27,6 @@ function searchTournament() {
     req.send();
 }
 
-//Redirect to tournament page
-function openTournament(tournamentId){
-    console.log("In function, id=: " + tournamentId);
-    window.location.href = 'tournament/tournament.html?id=' + tournamentId;
-}
-
 //Loads the participant from the backend
 function load(){
     let id = new URL(location.href).searchParams.get('id')
@@ -54,8 +48,7 @@ function requestEnrolledTournaments(){
     let req = new XMLHttpRequest();
     req.open("GET", requestTarget + "participants/" + participant.id + "/tournaments", true);
     req.onload = function(){
-        enrolledTournaments = JSON.parse(this.response);
-        makeTournamentTable(enrolledTournaments, enrolledTournamentsDiv);
+        makeTournamentTable(JSON.parse(this.response), enrolledTournamentsDiv);
     }
     req.send();
 }
@@ -94,7 +87,40 @@ function makeTournamentTable(tournaments, tourDiv){
     tourDiv.appendChild(table);
 }
 
+function requestGameStatistics(){
+    let req = new XMLHttpRequest();
+    req.open("GET", requestTarget + "participants/" + participant.id + "/results", true);
+    req.onload = function(){
+        makeGamesChart(JSON.parse(this.response));
+    }
+    req.send();
+}
+
+function makeGamesChart(data){
+    var options = {
+        title: {
+            text: "Total of won and lost games"
+        },
+        data: [{
+                type: "pie",
+                startAngle: 45,
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabel: "{label} ({y})",
+                yValueFormatString:"#,##0.#"%"",
+                dataPoints: data
+        }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+}
+
 //Redirect to newUser page
 function editUser(){
     window.location.href = 'newUser/newUser.html?id=' + participant.id;
+}
+
+//Redirect to tournament page
+function openTournament(tournamentId){
+    console.log("In function, id=: " + tournamentId);
+    window.location.href = 'tournament/tournament.html?id=' + tournamentId;
 }
