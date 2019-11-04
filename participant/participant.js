@@ -1,7 +1,8 @@
 let tournamentDiv = document.getElementById("tournaments");
+let enrolledTournamentsDiv = document.getElementById("enrolledTournaments");
+let chartDiv = document.getElementById("pieChart");
 let tournaments;
 let participant = {};
-let enrolledTournamentsDiv = document.getElementById("enrolledTournaments");
 
 load();
 
@@ -16,7 +17,7 @@ function searchTournament() {
         if (this.readyState == 4 && this.status == 200) {
             tournaments = JSON.parse(req.responseText);
             console.log("Tournaments: " + tournaments);
-            if(tournamentDiv.hasChildNodes()){
+            if (tournamentDiv.hasChildNodes()) {
                 tournamentDiv.removeChild(tournamentDiv.children[0]);
             }
             makeTournamentTable(tournaments, tournamentDiv);
@@ -27,32 +28,32 @@ function searchTournament() {
 }
 
 //Loads the participant from the backend
-function load(){
-    let id = new URL(location.href).searchParams.get('id')
-    console.log(id);
+function load() {
+    let id = new URL(location.href).searchParams.get('id');
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + id, true);
     req.setRequestHeader("Content-type", "application/json");
-    req.onload = function(){
+    req.onload = function () {
         participant = JSON.parse(this.response);
         localStorage.setItem("participant", this.response);
         console.log("Participant= " + localStorage.getItem("participant"));
         document.getElementById("name").innerHTML = participant.firstName + " " + participant.lastName;
         requestEnrolledTournaments();
+        requestGameStatistics();
     };
     req.send();
 }
 
-function requestEnrolledTournaments(){
+function requestEnrolledTournaments() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/tournaments", true);
-    req.onload = function(){
+    req.onload = function () {
         makeTournamentTable(JSON.parse(this.response), enrolledTournamentsDiv);
     }
     req.send();
 }
 
-function makeTournamentTable(tournaments, tourDiv){
+function makeTournamentTable(tournaments, tourDiv) {
     let table = document.createElement("table");
     //Build headers
     var header = table.createTHead();
@@ -62,18 +63,18 @@ function makeTournamentTable(tournaments, tourDiv){
     row.insertCell(2).innerHTML = "<b>Start Date</b>";
     row.insertCell(3).innerHTML = "<b>End Date<b>";
     row.insertCell(4).innerHTML = "<b>Enrol Date</b>";
-    for(tournament of tournaments){
+    for (tournament of tournaments) {
         row = table.insertRow();
         row.insertCell(-1).innerHTML = tournament.name;
         var levelsCell = row.insertCell(1);
         //Check number of categories
-        if(tournament.levels == null){
+        if (tournament.levels == null) {
             levelsCell.innerHTML = "No categories known yet";
         } else {
             for (level of tournament.levels) {
                 levelsCell.innerHTML += level + ", ";
             }
-            levelsCell.innerHTML = levelsCell.innerHTML.substring(0, levelsCell.innerHTML.length -2);
+            levelsCell.innerHTML = levelsCell.innerHTML.substring(0, levelsCell.innerHTML.length - 2);
         }
         row.insertCell(-1).innerHTML = tournament.startDate;
         row.insertCell(-1).innerHTML = tournament.endDate;
@@ -86,40 +87,51 @@ function makeTournamentTable(tournaments, tourDiv){
     tourDiv.appendChild(table);
 }
 
-function requestGameStatistics(){
+function requestGameStatistics() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/results", true);
-    req.onload = function(){
-        makeGamesChart(JSON.parse(this.response));
+    req.onload = function () {
+        makeGamesChart(parseStatistics(JSON.parse(this.response)));
     }
     req.send();
 }
 
-function makeGamesChart(data){
-    var options = {
+function parseStatistics(data) {
+    let parsedData = [];
+    parsedData.push({ y: data[1], indexLabel: "Won", color: "#00ff00" });
+    parsedData.push({ y: data[2], indexLabel: "Lost", color: "#ff0000" });
+    return parsedData;
+}
+function makeGamesChart(participantData) {
+    let myPieChart = new CanvasJS.Chart(chartDiv, {
+        backgroundColor: "white",
+        colorSet: "colorSet2",
         title: {
-            text: "Total of won and lost games"
+            text: "Game statistics"
         },
+        animationEnabled: true,
         data: [{
-                type: "pie",
-                startAngle: 45,
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabel: "{label} ({y})",
-                yValueFormatString:"#,##0.#"%"",
-                dataPoints: data
+            indexLabelFontSize: 15,
+            indexLabelFontFamily: "Monospace",
+            indexLabelFontColor: "darkgrey",
+            indexLabelLineColor: "darkgrey",
+            indexLabelPlacement: "outside",
+            type: "pie",
+            showInLegend: false,
+            toolTipContent: "<strong>#percent%</strong>",
+            dataPoints: participantData
         }]
-    };
-    $("#chartContainer").CanvasJSChart(options);
+    });
+    myPieChart.render();
 }
 
 //Redirect to newUser page
-function editUser(){
+function editUser() {
     window.location.href = 'newUser/newUser.html?id=' + participant.id;
 }
 
 //Redirect to tournament page
-function openTournament(tournamentId){
+function openTournament(tournamentId) {
     console.log("In function, id=: " + tournamentId);
     window.location.href = 'tournament/tournament.html?id=' + tournamentId;
 }
