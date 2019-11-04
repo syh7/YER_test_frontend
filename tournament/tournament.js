@@ -27,3 +27,17 @@ function enrol() {
     //window.localStorage.setItem("tournament", tournament);
     window.location.href = "enrolment/enrolment.html";
 }
+
+function goHome(){
+    let participant = localStorage.getItem("participant");
+    if(participant !== null){
+        window.location.href = "../participant/participant.html?id=" + participant.id;
+    } else {
+        let admin = localStorage.getItem("admin");
+        if(admin !== null){
+            window.location.href = "../admin/admin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
