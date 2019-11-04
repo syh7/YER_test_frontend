@@ -27,7 +27,7 @@ function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
         console.log("URL = " + serverIP + "participants");
-        req.open("POST", serverIP + "participants", false);
+        req.open("POST", serverIP + "participants", true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
@@ -125,6 +125,5 @@ function update(){
 */
 function openUser(userId){
     console.log("In openUser(): " + userId);
-    //alert("In openUser()");
-    window.location.href = 'participant/participant.html?id=' + userId;
+    window.location.href = '../participant/participant.html?id=' + userId;
 }
