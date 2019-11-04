@@ -1,31 +1,33 @@
 <html>
-    <head>
-        <title>Participant</title>
-        <link rel="stylesheet" src="index.css">    
-        <script src="../config.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>  
-        <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-    </head>
 
-    <body>
-        <div id="main">  
-            <h3 id="name"></h3>
-            <input type="text" placeholder="Search Tournament.." id="searchbar"> 
-            <button id="searchButton" onclick="searchTournament()">Search</button> <br>
-            <table id="tournaments"></table>
-        </div>
-        <div id="editDiv">
-            <button id="editButton" onclick="editUser()">Edit</button>
-        </div>
-        <div id="enrolledTournaments">
-            <h4>Enrolled tournaments</h4>
-        </div>
-        
-        <chart id="pieChart"></chart>
-    </body>
+<head>
+    <title>Participant</title>
+    <link rel="stylesheet" src="index.css">
+    <script src="../config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</head>
 
-    <script src="participant.js"></script>
+<body>
+    <div id="main">
+        <h3 id="name"></h3>
+        <input type="text" placeholder="Search Tournament.." id="searchbar">
+        <button id="searchButton" onclick="searchTournament()">Search</button> <br>
+        <table id="tournaments"></table>
+    </div>
+    <div id="editDiv">
+        <button id="editButton" onclick="editUser()">Edit</button>
+    </div>
+    <div id="enrolledTournaments">
+        <h4>Enrolled tournaments</h4>
+    </div>
+
+    <chart id="pieChart"></chart>
+</body>
+
+<script src="participant.js"></script>
+
 </html>
