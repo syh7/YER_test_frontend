@@ -5,9 +5,9 @@ onLoad();
 /*Check if user is already logged in, in that case fill in their
 * data and change the function to updating
 */
-function onLoad(){
+function onLoad() {
     urlId = new URL(location.href).searchParams.get('id');
-    if(urlId == null){
+    if (urlId == null) {
         console.log("No user");
         admin = {};
     } else {
@@ -15,7 +15,7 @@ function onLoad(){
         console.log(admin);
         loadUserInput();
         console.log("Admin= " + admin.name);
-        document.getElementById("newUser").onclick = function(){
+        document.getElementById("newUser").onclick = function () {
             update();
         };
     }
@@ -24,11 +24,11 @@ function onLoad(){
 /*Post a new Admin to the backend, also saves admindata locally
 */
 function newAdmin() {
-    if(checkPassword()){  
+    if (checkPassword()) {
         let req = new XMLHttpRequest();
         req.open("POST", serverIP + "admins", true);
         //req.responseType = "json";
-        req.onload = function() {
+        req.onload = function () {
             console.log(JSON.parse(this.responseText).id);
             localStorage.setItem("admin", admin);
             alert(admin.name + " aangemaakt");
@@ -36,7 +36,7 @@ function newAdmin() {
         }
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
-        
+
     } else {
         alert("Passwords do not matchTEST");
     }
@@ -44,11 +44,11 @@ function newAdmin() {
 
 /*Gets admindata from the backend
 */
-function getAdmin(){
+function getAdmin() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "admins/" + urlId, false);
     req.setRequestHeader("Content-type", "application/json");
-    req.onload = function(){
+    req.onload = function () {
         admin = JSON.parse(this.response);
         localStorage.setItem("admin", this.response);
         console.log(JSON.parse(localStorage.getItem("admin")));
@@ -77,8 +77,8 @@ function loadUserInput() {
 
 /*Checks if passwords in inputfields match
 */
-function checkPassword(){
-    if(document.getElementById("password").value == document.getElementById("passwordConfirm").value){
+function checkPassword() {
+    if (document.getElementById("password").value == document.getElementById("passwordConfirm").value) {
         return true;
     } else {
         return false;
@@ -87,12 +87,12 @@ function checkPassword(){
 
 /*Updates the database with new admin data
 */
-function update(){
-    if(checkPassword()){  
+function update() {
+    if (checkPassword()) {
         let req = new XMLHttpRequest();
         req.open("PUT", serverIP + "admins/" + admin.id + "/newPassword", true);
         //req.responseType = "json";
-        req.onload = function() {
+        req.onload = function () {
             console.log(JSON.parse(this.responseText).id);
             alert("User updated");
             openUser(JSON.parse(this.responseText).id);
@@ -107,7 +107,7 @@ function update(){
 
 /*Redirect to admin page
 */
-function openUser(userId){
+function openUser(userId) {
     console.log("In openUser(): " + userId);
     alert("In openUser()");
     //window.location.href = 'admin.html?id=' + userId;

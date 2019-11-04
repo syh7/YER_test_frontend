@@ -14,10 +14,10 @@ function load() {
     console.log("Tournament.id: = " + tournament.id);
     console.log("Participant.firstName = " + participant.firstName)
     document.getElementById("name").innerHTML = tournament.name;
-    if(tournament.maxDisciplines > 1){
+    if (tournament.maxDisciplines > 1) {
         console.log("Max Disciplines: " + tournament.maxDisciplines);
-        
-        for(let i = 1; i < tournament.maxDisciplines; i++){
+
+        for (let i = 1; i < tournament.maxDisciplines; i++) {
             console.log("Building " + i + " clone");
             let disc = $("#disciplineRow1").clone();
             console.log(disc);
@@ -30,13 +30,13 @@ function load() {
 
 /* Disables partner inputfield if it is a singles discipline
 */
-function checkPartner(disciplineDropdown){
+function checkPartner(disciplineDropdown) {
     console.log(disciplineDropdown);
     console.log(disciplineDropdown.value);
-    if(disciplineDropdown.value.includes("SINGLE")){
+    if (disciplineDropdown.value.includes("SINGLE")) {
         console.log("true");
         $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = true;
-        $(disciplineDropdown).siblings(".leagueNumber")[0].value="";
+        $(disciplineDropdown).siblings(".leagueNumber")[0].value = "";
     } else {
         console.log("false");
         $(disciplineDropdown).siblings(".leagueNumber")[0].disabled = false;
@@ -46,16 +46,16 @@ function checkPartner(disciplineDropdown){
 /* TODO
 *  Sends new enrolment to the backend 
 */
-function submit(){
+function submit() {
     alert(participant.firstName + " " + participant.lastName + " has enrolled!")
     buildJSON();
 }
 
 /*  Constructs the JSON file containing enrolmentDTO
 */
-function buildJSON(){
+function buildJSON() {
     let enrolments = [];
-    for(let i = 0; i < tournament.maxDisciplines; i++){
+    for (let i = 0; i < tournament.maxDisciplines; i++) {
         //enrolment.partnerLeagueNumber = ;
     }
     console.log(JSON.stringify(participant.id + enrolments));
