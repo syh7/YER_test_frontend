@@ -26,6 +26,7 @@ function onLoad(){
 function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
+        console.log("URL = " + serverIP + "participants");
         req.open("POST", serverIP + "participants", false);
         //req.responseType = "json";
         req.onload = function() {
@@ -66,7 +67,7 @@ function getUserInput() {
     participant.dateOfBirth = document.getElementById("dateOfBirth").value;
     participant.leagueNumber = document.getElementById("leagueNumber").value;
     let gender = $("input[type='radio'][name='gender']:checked").val();
-    participant.isMale = gender == "male";
+    participant.male = gender == "male";
     console.log(JSON.stringify(participant));
     return participant;
 }
