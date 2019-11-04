@@ -4,14 +4,22 @@
     <title>New User</title>
     <link rel="stylesheet" src="index.css">
     <script src="../config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div id="main">
 
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="inputDiv">
         Email: <input type="text" id="email" required> <br>
         Password: <input type="password" id="password" required> <br>
         Confirm Password: <input type="password" id="passwordConfirm" required> <br>
@@ -34,8 +42,8 @@
         <p><input type="radio" name="gender" value="male"> Male
             <input type="radio" name="gender" value="female"> Female<br></p>
         <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
-
     </div>
+
 </body>
 
 <script src="newParticipant.js"></script>

@@ -46,7 +46,7 @@ function newParticipant() {
 */
 function getParticipant() {
     let req = new XMLHttpRequest();
-    req.open("GET", serverIP + "participants/" + urlId + "/newPassword", false);
+    req.open("GET", serverIP + "participants/" + urlId, false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function () {
         participant = JSON.parse(this.response);
@@ -87,7 +87,7 @@ function loadUserInput() {
     if (participant.male == true) {
         $("input[type='radio'][value='male']").attr("checked", true);
     } else {
-        $("input[type='radio'][name='female'']").attr("checked", true);
+        $("input[type='radio'][name='female']").attr("checked", true);
     }
 }
 
