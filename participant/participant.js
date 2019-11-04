@@ -127,11 +127,19 @@ function makeGamesChart(participantData) {
 
 //Redirect to newUser page
 function editUser() {
-    window.location.href = 'newUser/newUser.html?id=' + participant.id;
+    window.location.href = '../newparticipant/newparticipant.html?id=' + participant.id;
 }
 
 //Redirect to tournament page
 function openTournament(tournamentId) {
     console.log("In function, id=: " + tournamentId);
     window.location.href = 'tournament/tournament.html?id=' + tournamentId;
+}
+
+function logout(){
+    let b = confirm("Are you sure you want to logout?");
+    if(b){
+        alert("You have logged out.");
+        window.location.href = "../index/index.html";
+    }
 }

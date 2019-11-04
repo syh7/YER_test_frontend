@@ -12,20 +12,33 @@
 </head>
 
 <body>
+
+    <nav class="navbar navbar-default"></nav> <!-- DUMMY NAVBAR TO PREVENT NAVBAR BLOCKING-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user" onclick="editUser()"> Profile</span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out" onclick="logout()"> Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div id="main">
         <h3 id="name"></h3>
         <input type="text" placeholder="Search Tournament.." id="searchbar">
         <button id="searchButton" onclick="searchTournament()">Search</button> <br>
         <table id="tournaments"></table>
     </div>
-    <div id="editDiv">
-        <button id="editButton" onclick="editUser()">Edit</button>
-    </div>
+
     <div id="enrolledTournaments">
         <h4>Enrolled tournaments</h4>
     </div>
 
     <chart id="pieChart"></chart>
+
 </body>
 
 <script src="participant.js"></script>
