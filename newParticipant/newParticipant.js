@@ -26,7 +26,8 @@ function onLoad(){
 function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("POST", serverIP + "participants", false);
+        console.log("URL = " + serverIP + "participants");
+        req.open("POST", serverIP + "participants", true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
@@ -66,7 +67,7 @@ function getUserInput() {
     participant.dateOfBirth = document.getElementById("dateOfBirth").value;
     participant.leagueNumber = document.getElementById("leagueNumber").value;
     let gender = $("input[type='radio'][name='gender']:checked").val();
-    participant.isMale = gender == "male";
+    participant.male = gender == "male";
     console.log(JSON.stringify(participant));
     return participant;
 }
@@ -124,6 +125,5 @@ function update(){
 */
 function openUser(userId){
     console.log("In openUser(): " + userId);
-    //alert("In openUser()");
-    window.location.href = 'participant/participant.html?id=' + userId;
+    window.location.href = '../participant/participant.html?id=' + userId;
 }

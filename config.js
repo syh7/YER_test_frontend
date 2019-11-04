@@ -1,1 +1,1 @@
-let serverIP = "http://yourwebsitehere.com/" //add trailing backslash!
+let serverIP = "http://yourwebsitehere.com/" //don't forget trailing backslash
