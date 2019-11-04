@@ -20,7 +20,8 @@
     </nav>
 
     <div id="container">
-        <form>
+        <h3>Enter your information</h3>
+        <form class="form-horizontal" onsubmit="return false">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-4">
@@ -44,32 +45,50 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="firstName">First name:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required> <br>
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                    <br>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="lastName">Last name:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required> <br>
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
                 </div>
             </div>
-            Date of birth: <input type="date" id="dateOfBirth" required> <br>
-            Player level: <select id="playerLevel">
-                <option value="9"> 9e divisie </option>
-                <option value="8"> 8e divisie </option>
-                <option value="7"> 7e divisie </option>
-                <option value="6"> 6e divisie </option>
-                <option value="5"> 5e divisie </option>
-                <option value="4"> 4e divisie </option>
-                <option value="3"> 3e divisie </option>
-                <option value="2"> 2e divisie </option>
-                <option value="1"> 1e divisie </option>
-                <option value="0"> Ere-divisie </option>
-            </select> <br>
-            League number: <input type="text" id="leagueNumber" required> <br>
-            <p><input type="radio" name="gender" value="male"> Male
-                <input type="radio" name="gender" value="female"> Female<br></p>
-            <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="dateofBirth">Date of birth:</label>
+                <input type="date" id="dateOfBirth" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="playerLevel">Playerlevel:</label>
+                <select id="playerLevel">
+                    <option value="9"> 9e divisie </option>
+                    <option value="8"> 8e divisie </option>
+                    <option value="7"> 7e divisie </option>
+                    <option value="6"> 6e divisie </option>
+                    <option value="5"> 5e divisie </option>
+                    <option value="4"> 4e divisie </option>
+                    <option value="3"> 3e divisie </option>
+                    <option value="2"> 2e divisie </option>
+                    <option value="1"> 1e divisie </option>
+                    <option value="0"> Ere-divisie </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="leagueNumber">League number:</label>
+                <input type="number" id="leagueNumber" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Gender">Gender:</label>
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn" id="newUser" onclick="newParticipant()">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 
