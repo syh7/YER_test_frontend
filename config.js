@@ -1,1 +1,1 @@
-let serverIP = "http://yourwebsitehere.com/" //don't forget trailing backslash
+let serverIP = "http:localhost:8082/" //don't forget trailing backslash
