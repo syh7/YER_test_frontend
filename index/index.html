@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h3>Log in</h3>
-        <form class="form-horizontal" >
+        <form class="form-horizontal" onsubmit="return false">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-4">
@@ -32,8 +32,8 @@
             </div>
 
             <br><br><br><br>
-            <button id="newUser" onclick="location.href='newUser/newUser.html'" class="btn">NEW USER</button>
-            <button id="newAdmin" onclick="location.href='newAdmin/newAdmin.html'" class="btn">NEW ADMIN</button>
+            <button id="newParticipant" onclick="location.href='../newParticipant/newParticipant.html'" class="btn">NEW PARTICIPANT</button>
+            <button id="newAdmin" onclick="location.href='../newAdmin/newAdmin.html'" class="btn">NEW ADMIN</button>
         </form>
     </div>
 </body>

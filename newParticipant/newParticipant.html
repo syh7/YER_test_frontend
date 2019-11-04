@@ -19,29 +19,58 @@
         </div>
     </nav>
 
-    <div id="inputDiv">
-        Email: <input type="text" id="email" required> <br>
-        Password: <input type="password" id="password" required> <br>
-        Confirm Password: <input type="password" id="passwordConfirm" required> <br>
-        First name: <input type="text" id="firstName" required> <br>
-        Last name: <input type="text" id="lastName" required> <br>
-        Date of birth: <input type="date" id="dateOfBirth" required> <br>
-        Player level: <select id="playerLevel">
-            <option value="9"> 9e divisie </option>
-            <option value="8"> 8e divisie </option>
-            <option value="7"> 7e divisie </option>
-            <option value="6"> 6e divisie </option>
-            <option value="5"> 5e divisie </option>
-            <option value="4"> 4e divisie </option>
-            <option value="3"> 3e divisie </option>
-            <option value="2"> 2e divisie </option>
-            <option value="1"> 1e divisie </option>
-            <option value="0"> Ere-divisie </option>
-        </select> <br>
-        League number: <input type="text" id="leagueNumber" required> <br>
-        <p><input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female<br></p>
-        <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
+    <div id="container">
+        <form>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="password">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                    <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="passwordConfirm">Confirm password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
+                        required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstName">First name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastName">Last name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required> <br>
+                </div>
+            </div>
+            Date of birth: <input type="date" id="dateOfBirth" required> <br>
+            Player level: <select id="playerLevel">
+                <option value="9"> 9e divisie </option>
+                <option value="8"> 8e divisie </option>
+                <option value="7"> 7e divisie </option>
+                <option value="6"> 6e divisie </option>
+                <option value="5"> 5e divisie </option>
+                <option value="4"> 4e divisie </option>
+                <option value="3"> 3e divisie </option>
+                <option value="2"> 2e divisie </option>
+                <option value="1"> 1e divisie </option>
+                <option value="0"> Ere-divisie </option>
+            </select> <br>
+            League number: <input type="text" id="leagueNumber" required> <br>
+            <p><input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> Female<br></p>
+            <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
+        </form>
     </div>
 
 </body>
