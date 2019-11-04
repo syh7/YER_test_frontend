@@ -112,3 +112,7 @@ function openUser(userId) {
     alert("In openUser()");
     //window.location.href = 'admin.html?id=' + userId;
 }
+
+function goBack(){
+    window.history.back();
+}

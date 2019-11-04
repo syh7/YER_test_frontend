@@ -127,3 +127,7 @@ function openUser(userId) {
     console.log("In openUser(): " + userId);
     window.location.href = '../participant/participant.html?id=' + userId;
 }
+
+function goBack(){
+    window.history.back();
+}
