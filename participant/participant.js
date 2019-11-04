@@ -121,5 +121,5 @@ function editUser(){
 //Redirect to tournament page
 function openTournament(tournamentId){
     console.log("In function, id=: " + tournamentId);
-    window.location.href = 'tournament/tournament.html?id=' + tournamentId;
+    window.location.href = '../tournament/tournament.html?id=' + tournamentId;
 }
