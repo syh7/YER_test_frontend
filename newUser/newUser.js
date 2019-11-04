@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let participant = {};
 let urlId;
 onLoad();
@@ -27,7 +26,7 @@ function onLoad(){
 function newParticipant() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("POST", requestTarget + "participants", false);
+        req.open("POST", serverIP + "participants", false);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
@@ -46,7 +45,7 @@ function newParticipant() {
 */
 function getParticipant(){
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participants/" + urlId  + "/newPassword", false);
+    req.open("GET", serverIP + "participants/" + urlId  + "/newPassword", false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         participant = JSON.parse(this.response);
@@ -106,7 +105,7 @@ function checkPassword(){
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("PUT", requestTarget + "participants/" + participant.id, true);
+        req.open("PUT", serverIP + "participants/" + participant.id, true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);

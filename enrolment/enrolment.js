@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let tournament = {};
 let enrolment = {};
 let participant = {};

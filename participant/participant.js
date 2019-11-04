@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let tournamentDiv = document.getElementById("tournaments");
 let tournaments;
 let participant = {};
@@ -23,7 +22,7 @@ function searchTournament() {
             makeTournamentTable(tournaments, tournamentDiv);
         }
     }
-    req.open("GET", requestTarget + "tournaments/?mode=contains&search=" + search, true);
+    req.open("GET", serverIP + "tournaments/?mode=contains&search=" + search, true);
     req.send();
 }
 
@@ -32,7 +31,7 @@ function load(){
     let id = new URL(location.href).searchParams.get('id')
     console.log(id);
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participants/" + id, true);
+    req.open("GET", serverIP + "participants/" + id, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         participant = JSON.parse(this.response);
@@ -46,7 +45,7 @@ function load(){
 
 function requestEnrolledTournaments(){
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participants/" + participant.id + "/tournaments", true);
+    req.open("GET", serverIP + "participants/" + participant.id + "/tournaments", true);
     req.onload = function(){
         makeTournamentTable(JSON.parse(this.response), enrolledTournamentsDiv);
     }
@@ -89,7 +88,7 @@ function makeTournamentTable(tournaments, tourDiv){
 
 function requestGameStatistics(){
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "participants/" + participant.id + "/results", true);
+    req.open("GET", serverIP + "participants/" + participant.id + "/results", true);
     req.onload = function(){
         makeGamesChart(JSON.parse(this.response));
     }

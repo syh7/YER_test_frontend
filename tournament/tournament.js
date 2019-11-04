@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let tournament = {};
 
 load();
@@ -9,7 +8,7 @@ function load(){
     let id = new URL(location.href).searchParams.get('id')
     console.log(id);
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "tournaments/" + id, true);
+    req.open("GET", serverIP + "tournaments/" + id, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         tournament = JSON.parse(this.response);
