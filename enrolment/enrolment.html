@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Enrolment</title>
     <script src="../config.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <div id="main">  
+    <div id="main">
         <h3 id="name"></h3>
         <div id="disciplineDiv">
             <p class="disciplines" id="disciplineRow1">
@@ -18,22 +22,22 @@
                     <option value="WOMENDOUBLES" class="women double">Women's Doubles</option>
                     <option value="MIXEDDOUBLES" class="double">Mixed Doubles</option>
                 </select>
-                
+
                 <select class="playerLevel">
-                        <option value="9"> 9e divisie </option>
-                        <option value="8"> 8e divisie </option>
-                        <option value="7"> 7e divisie </option>
-                        <option value="6"> 6e divisie </option>
-                        <option value="5"> 5e divisie </option>
-                        <option value="4"> 4e divisie </option>
-                        <option value="3"> 3e divisie </option>
-                        <option value="2"> 2e divisie </option>
-                        <option value="1"> 1e divisie </option>
-                        <option value="0"> Ere-divisie </option>
+                    <option value="9"> 9e divisie </option>
+                    <option value="8"> 8e divisie </option>
+                    <option value="7"> 7e divisie </option>
+                    <option value="6"> 6e divisie </option>
+                    <option value="5"> 5e divisie </option>
+                    <option value="4"> 4e divisie </option>
+                    <option value="3"> 3e divisie </option>
+                    <option value="2"> 2e divisie </option>
+                    <option value="1"> 1e divisie </option>
+                    <option value="0"> Ere-divisie </option>
                 </select>
 
                 <input class="leagueNumber" placeholder="league number partner">
-                
+
             </p>
         </div>
         <button id="submitButton" onclick="submit()">Enrol</button> <br>
@@ -41,4 +45,5 @@
 </body>
 
 <script src='enrolment.js'></script>
+
 </html>

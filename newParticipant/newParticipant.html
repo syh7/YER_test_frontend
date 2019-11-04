@@ -1,42 +1,52 @@
 <html>
-    <head>
-        <title>New User</title>
-        <link rel="stylesheet" src="index.css">
-        <script src="../config.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        
-    </head>
 
-    <body>
-        <div id="main">
-            
-                Email: <input type="text" id="email" required> <br>
-                Password: <input type="password" id="password" required> <br>
-                Confirm Password: <input type="password" id="passwordConfirm" required> <br>
-                First name: <input type="text" id="firstName" required> <br>
-                Last name: <input type="text" id="lastName" required> <br>
-                Date of birth: <input type="date" id="dateOfBirth" required> <br>
-                Player level: <select id="playerLevel">
-                    <option value="9"> 9e divisie </option>
-                    <option value="8"> 8e divisie </option>
-                    <option value="7"> 7e divisie </option>
-                    <option value="6"> 6e divisie </option>
-                    <option value="5"> 5e divisie </option>
-                    <option value="4"> 4e divisie </option>
-                    <option value="3"> 3e divisie </option>
-                    <option value="2"> 2e divisie </option>
-                    <option value="1"> 1e divisie </option>
-                    <option value="0"> Ere-divisie </option>
-                </select> <br>
-                League number: <input type="text" id="leagueNumber" required> <br>
-                <p><input type="radio" name="gender" value="male"> Male
-                <input type="radio" name="gender" value="female"> Female<br></p>
-                <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
-            
+<head>
+    <title>New User</title>
+    <link rel="stylesheet" src="index.css">
+    <script src="../config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back </a></li>
+            </ul>
         </div>
-    </body>
+    </nav>
 
-    <script src="newParticipant.js"></script>
+    <div id="inputDiv">
+        Email: <input type="text" id="email" required> <br>
+        Password: <input type="password" id="password" required> <br>
+        Confirm Password: <input type="password" id="passwordConfirm" required> <br>
+        First name: <input type="text" id="firstName" required> <br>
+        Last name: <input type="text" id="lastName" required> <br>
+        Date of birth: <input type="date" id="dateOfBirth" required> <br>
+        Player level: <select id="playerLevel">
+            <option value="9"> 9e divisie </option>
+            <option value="8"> 8e divisie </option>
+            <option value="7"> 7e divisie </option>
+            <option value="6"> 6e divisie </option>
+            <option value="5"> 5e divisie </option>
+            <option value="4"> 4e divisie </option>
+            <option value="3"> 3e divisie </option>
+            <option value="2"> 2e divisie </option>
+            <option value="1"> 1e divisie </option>
+            <option value="0"> Ere-divisie </option>
+        </select> <br>
+        League number: <input type="text" id="leagueNumber" required> <br>
+        <p><input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female<br></p>
+        <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
+    </div>
 
-    
+</body>
+
+<script src="newParticipant.js"></script>
+
+
 </html>
