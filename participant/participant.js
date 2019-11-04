@@ -1,5 +1,5 @@
-let tournamentDiv = document.getElementById("tournaments");
-let enrolledTournamentsDiv = document.getElementById("enrolledTournaments");
+let searchTournamentContainer = document.getElementById("searchTournamentContainer");
+let enroledTournamentContainer = document.getElementById("enroledTournamentContainer");
 let chartDiv = document.getElementById("pieChart");
 let tournaments;
 let participant = {};
@@ -17,10 +17,10 @@ function searchTournament() {
         if (this.readyState == 4 && this.status == 200) {
             tournaments = JSON.parse(req.responseText);
             console.log("Tournaments: " + tournaments);
-            if (tournamentDiv.hasChildNodes()) {
-                tournamentDiv.removeChild(tournamentDiv.children[0]);
+            if (searchTournamentContainer.hasChildNodes()) {
+                searchTournamentContainer.removeChild(searchTournamentContainer.children[0]);
             }
-            makeTournamentTable(tournaments, tournamentDiv);
+            makeTournamentTable(tournaments, searchTournamentContainer);
         }
     }
     req.open("GET", serverIP + "tournaments/?mode=contains&search=" + search, true);
@@ -48,13 +48,14 @@ function requestEnrolledTournaments() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/tournaments", true);
     req.onload = function () {
-        makeTournamentTable(JSON.parse(this.response), enrolledTournamentsDiv);
+        makeTournamentTable(JSON.parse(this.response), enroledTournamentContainer);
     }
     req.send();
 }
 
 function makeTournamentTable(tournaments, tourDiv) {
     let table = document.createElement("table");
+    table.classList.add("table", ".table-striped", ".table-bordered");
     //Build headers
     var header = table.createTHead();
     row = header.insertRow(0);
