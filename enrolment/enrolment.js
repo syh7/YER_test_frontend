@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let tournament = {};
 let enrolment = {};
 let participant = {};
@@ -60,6 +59,4 @@ function buildJSON(){
         //enrolment.partnerLeagueNumber = ;
     }
     console.log(JSON.stringify(participant.id + enrolments));
-
-    
 }

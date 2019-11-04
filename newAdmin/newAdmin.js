@@ -1,4 +1,3 @@
-let requestTarget = "http://localhost:8082/";
 let admin;
 let urlId;
 onLoad();
@@ -27,7 +26,7 @@ function onLoad(){
 function newAdmin() {
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("POST", requestTarget + "admins", true);
+        req.open("POST", serverIP + "admins", true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
@@ -47,7 +46,7 @@ function newAdmin() {
 */
 function getAdmin(){
     let req = new XMLHttpRequest();
-    req.open("GET", requestTarget + "admins/" + urlId, false);
+    req.open("GET", serverIP + "admins/" + urlId, false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function(){
         admin = JSON.parse(this.response);
@@ -91,7 +90,7 @@ function checkPassword(){
 function update(){
     if(checkPassword()){  
         let req = new XMLHttpRequest();
-        req.open("PUT", requestTarget + "admins/" + admin.id + "/newPassword", true);
+        req.open("PUT", serverIP + "admins/" + admin.id + "/newPassword", true);
         //req.responseType = "json";
         req.onload = function() {
             console.log(JSON.parse(this.responseText).id);
