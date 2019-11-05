@@ -38,7 +38,7 @@ function newParticipant() {
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
     } else {
-        alert("Passwords do not matchTEST");
+        alert("Passwords do not match");
     }
 }
 
