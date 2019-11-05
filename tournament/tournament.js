@@ -67,3 +67,29 @@ function goHome(){
         }
     }
 }
+
+function goBack(){
+    window.history.back();
+}
+
+function editUser(){
+    let participant = JSON.parse(localStorage.getItem("participant"));
+    if(participant !== null){
+        window.location.href = "../newparticipant/newparticipant.html?id=" + participant.id;
+    } else {
+        let admin = JSON.parse(localStorage.getItem("admin"));
+        if(admin !== null){
+            window.location.href = "../newadmin/newadmin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
+
+function logout() {
+    let b = confirm("Are you sure you want to logout?");
+    if (b) {
+        alert("You have logged out.");
+        window.location.href = "../index/index.html";
+    }
+}
