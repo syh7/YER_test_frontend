@@ -16,8 +16,25 @@ function load() {
         console.log(localStorage.getItem("tournament"));
         document.getElementById("tournamentName").innerHTML = tournament.name;
         document.getElementById("info").innerHTML = tournament.description;
+        setPhaseDiv();
     };
     req.send();
+}
+
+function setPhaseDiv(){
+    let phaseDiv = document.getElementById("phaseDiv");
+    let currentDate = new Date();
+    if(new Date(tournament.enrolDate) > currentDate){ //enroldate not yet then enrolment phase
+        phaseDiv.innerHTML = "Enrolments are open.";
+        phaseDiv.classList.add("enrolment");
+    } else if(new Date(tournament.startDate) > currentDate){ //enroldate passed, not started yet
+        phaseDiv.innerHTML = "Enrolments are closed.";
+    } else if(new Date(tournament.endDate) > currentDate){ //started, not finished yet
+        phaseDiv.innerHTML = "Tournament has started.";
+        phaseDiv.classList.add("started");
+    } else { //finished
+        phaseDiv.innerHTML = "Tournament has finished.";
+    }
 }
 
 /* Redirect to enrolment page

@@ -2,19 +2,19 @@
 
 <head>
     <title>Tournament</title>
-    <link rel="stylesheet" src="index.css">
     <script src="../config.js"></script>
+    <link rel="stylesheet" href="tournament.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-default"> <!-- DUMMY NAVBAR -->
+    <nav class="navbar navbar-default"> <!-- DUMMY NAVBAR --></nav>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li onclick="goHome()"><a><span class="glyphicon glyphicon-home"> Home</span></a></li>
+                <li onclick="goHome()" style="cursor:pointer"><a><span class="glyphicon glyphicon-home"> Home</span></a></li>
                 <li class="active"><a href="#">Information</a></li>
                 <li><a href="#">Enrolments</a></li>
                 <li><a href="#">Teams</a></li>
@@ -28,18 +28,15 @@
         </div>
     </nav>
 
-    <div id="main">
+    <div id="container">
         <h3 id="tournamentName"></h3>
         <p id="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
             quas nobis voluptatibus. Odit, necessitatibus veniam fugiat
             voluptatibus libero quisquam reiciendis laborum numquam dignissimos
             laboriosam molestiae tempora aliquam ad modi asperiores.</p>
         <button id="enrol" onclick="enrol()">Enrol</button>
-        <h4 id="phase" class="enrol">Enrolment Phase</h4>
-        <table id="games">
-
-        </table>
     </div>
+    <div id="phaseDiv" class="phase"></div>
 </body>
 
 <script src="tournament.js"></script>

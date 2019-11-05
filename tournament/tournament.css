@@ -1,0 +1,12 @@
+.phase{
+    border-radius: 25px;
+    padding: 20px;
+    display: inline-block;
+    background : #d3d3d3;
+}
+.phase.enrolment{
+    background : #add8e6;
+}
+.phase.started{
+    background : #98fb98;
+}
