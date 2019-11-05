@@ -14,7 +14,6 @@ function load() {
         tournament = JSON.parse(this.response);
         localStorage.setItem("tournament", this.response);
         console.log(localStorage.getItem("tournament"));
-        document.getElementById("tournamentName").innerHTML = tournament.name;
         setInfoDiv();
         setPhaseDiv();
     };
@@ -22,12 +21,17 @@ function load() {
 }
 
 function setInfoDiv(){
-    document.getElementById("levelsDiv").innerHTML = "<b>Levels: </b>" + tournament.levels + "<b>.</b>";
-    document.getElementById("locationDiv").innerHTML = "<b>Location: </b>" + tournament.location + "<b>.</b>";
-    document.getElementById("disciplinesDiv").innerHTML = "<b>Maximum enrolments: </b>" + tournament.maxDisciplines + "<b>.</b>";
+    document.getElementById("tournamentName").innerHTML = tournament.name;
     setAdminName();
 
+    document.getElementById("enrolDateDiv").innerHTML = "<b>Enrol date: </b>" + tournament.enrolDate + "<b>.</b>";
+    document.getElementById("playDatesDiv").innerHTML = "<b>Tournament lasts from </b>" + tournament.startDate + "<b> to </b>" + tournament.endDate + "<b>.</b>";
+
+    document.getElementById("locationDiv").innerHTML = "<b>Location: </b>" + tournament.location + "<b>.</b>";
+    document.getElementById("levelsDiv").innerHTML = "<b>Levels: </b>" + tournament.levels + "<b>.</b>";
+    document.getElementById("disciplinesDiv").innerHTML = "<b>Maximum enrolments: </b>" + tournament.maxDisciplines + "<b>.</b>";
     document.getElementById("refereeDiv").innerHTML = "<b>Referee: </b>" + tournament.referee + "<b>.</b>";
+
     document.getElementById("descriptionDiv").innerHTML = tournament.description;
 }
 
@@ -36,7 +40,7 @@ function setAdminName(){
     req.open("GET", serverIP + "admins/" + tournament.adminId, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function () {
-        document.getElementById("adminDiv").innerHTML = "<b>Tournament organised by </b>" + JSON.parse(this.response).name + "<b>.</b>";
+        document.getElementById("adminDiv").innerHTML = "Tournament organised by " + JSON.parse(this.response).name + ".";
     };
     req.send();
 }
