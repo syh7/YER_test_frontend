@@ -14,7 +14,7 @@ function onLoad() {
         console.log(participant);
         loadUserInput();
         console.log("Participant= " + participant.firstName);
-        document.getElementById("newUser").onclick = function () {
+        document.getElementById("newParticipant").onclick = function () {
             update();
         };
     }
