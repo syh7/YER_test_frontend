@@ -15,7 +15,7 @@ function load() {
         localStorage.setItem("tournament", this.response);
         console.log(localStorage.getItem("tournament"));
         document.getElementById("tournamentName").innerHTML = tournament.name;
-        document.getElementById("info").innerHTML = tournament.description;
+        document.getElementById("description").innerHTML = tournament.description;
         setPhaseDiv();
     };
     req.send();
@@ -29,14 +29,10 @@ function setPhaseDiv(){
     if(new Date(tournament.enrolDate) > currentDate){ //enroldate not yet then enrolment phase
         phaseDiv.innerHTML = "Enrolments are open.";
         phaseDiv.classList.add("enrolment");
-        let button = document.createElement("button");
-        button.onclick = function(){
+        phaseDiv.onclick = function(){
             enrol();
         }
-        button.innerHTML = "Enrol";
-        button.id = "enrolBTN";
-        button.classList.add("btn", "btn-info");
-        phaseDiv.after(button);
+        phaseDiv.style.cursor = "pointer";
     } else if(new Date(tournament.startDate) > currentDate){ //enroldate passed, not started yet
         phaseDiv.innerHTML = "Enrolments are closed.";
     } else if(new Date(tournament.endDate) > currentDate){ //started, not finished yet

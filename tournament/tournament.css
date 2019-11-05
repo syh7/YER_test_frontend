@@ -1,6 +1,14 @@
+body {
+    padding-left : 2em;
+}
+
+#tournamentName{
+    text-align : center;
+}
+
 .phase{
-    border-radius: 25px;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 10px;
     display: inline-block;
     background : #d3d3d3;
 }
