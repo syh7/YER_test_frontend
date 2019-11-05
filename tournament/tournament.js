@@ -21,6 +21,8 @@ function load() {
     req.send();
 }
 
+/* Sets tournament phase dependant on tournament dates
+*/
 function setPhaseDiv(){
     let phaseDiv = document.getElementById("phaseDiv");
     let currentDate = new Date();
@@ -45,6 +47,9 @@ function enrol() {
     window.location.href = "enrolment/enrolment.html";
 }
 
+/* If participant, goes to participant/participant. Otherwise checks if admin, then goes to admin/admin.
+    Otherwise, gives error that you're not logged in.
+*/
 function goHome(){
     let participant = localStorage.getItem("participant");
     if(participant !== null){
