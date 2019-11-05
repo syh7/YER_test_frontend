@@ -52,18 +52,22 @@ function submit() {
 }
 
 /*  Constructs the JSON file containing enrolmentDTO
-CHECK DISCILPINES SELECTOR
 */
 function buildJSON() {
     let enrolments = [];
     for (let i = 1; i < tournament.maxDisciplines + 1; i++) {
-        if ($("#disciplineRow" + i).find(":selected").val() != "DEFAULT") {
-            enrolment.discipline = $("#disciplineRow" + i).find(":selected").val();
+        let enrolment = {};
+        let discipline = $("#disciplineRow" + i).children(".discipline")[0];
+        if ($(discipline).val() != "DEFAULT") {
+            
+            enrolment.discipline = $(discipline).val();
+            console.log(discipline);
+            //enrolment.discipline = $("#disciplineRow" + i).find(":selected").val();
             console.log(enrolment.discipline);
-            level = $("#disciplineRow" + i).children(".playerLevel")[0];
+            let level = $("#disciplineRow" + i).children(".playerLevel")[0];
             enrolment.playerLevel = $(level).val();
             console.log(enrolment.playerLevel);
-            partnerLeagueNumber = $("#disciplineRow" + i).children(".leagueNumber")[0];
+            let partnerLeagueNumber = $("#disciplineRow" + i).children(".leagueNumber")[0];
             if (partnerLeagueNumber.disabled) {
                 enrolment.partnerLeagueNumber = 0;
             } else {
@@ -73,7 +77,7 @@ function buildJSON() {
             enrolments[i-1] = enrolment;
             console.log(enrolments);
         }
-
     }
-    console.log(JSON.stringify(participant.id + enrolments));
+    let JSONenrolmentDTO = JSON.stringify(participant.id + enrolments);
+    console.log(JSONenrolmentDTO);
 }
