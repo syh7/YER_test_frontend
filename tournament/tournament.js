@@ -47,8 +47,7 @@ function setPhaseDiv(){
 */
 function enrol() {
     console.log("In enrol(): " + tournament.id);
-    //window.localStorage.setItem("tournament", tournament);
-    window.location.href = "enrolment/enrolment.html";
+    window.location.href = "../enrolment/enrolment.html";
 }
 
 /* If participant, goes to participant/participant. Otherwise checks if admin, then goes to admin/admin.

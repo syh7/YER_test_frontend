@@ -5,3 +5,11 @@ function signIn() {
     console.log(userName);
     return false;
 }
+
+function newParticipant(){
+    window.location.href = "../newParticipant/newParticipant.html";
+}
+
+function newAdmin(){
+    window.location.href = "../newAdmin/newAdmin.html";
+}
