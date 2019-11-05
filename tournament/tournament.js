@@ -15,8 +15,28 @@ function load() {
         localStorage.setItem("tournament", this.response);
         console.log(localStorage.getItem("tournament"));
         document.getElementById("tournamentName").innerHTML = tournament.name;
-        document.getElementById("description").innerHTML = tournament.description;
+        setInfoDiv();
         setPhaseDiv();
+    };
+    req.send();
+}
+
+function setInfoDiv(){
+    document.getElementById("levelsDiv").innerHTML = tournament.levels;
+    document.getElementById("locationDiv").innerHTML = tournament.location;
+    document.getElementById("disciplinesDiv").innerHTML = tournament.maxDisciplines;
+    setAdminName();
+
+    document.getElementById("refereeDiv").innerHTML = tournament.referee;
+    document.getElementById("descriptionDiv").innerHTML = tournament.description;
+}
+
+function setAdminName(){
+    let req = new XMLHttpRequest();
+    req.open("GET", serverIP + "admins/" + tournament.adminId, true);
+    req.setRequestHeader("Content-type", "application/json");
+    req.onload = function () {
+        document.getElementById("adminDiv").innerHTML = JSON.parse(this.response).name;
     };
     req.send();
 }
