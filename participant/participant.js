@@ -126,6 +126,7 @@ function makeGamesChart(participantData) {
             text: "Game statistics"
         },
         animationEnabled: true,
+        interactivityEnabled: false,
         data: [{
             indexLabelFontSize: 15,
             indexLabelFontFamily: "Monospace",
@@ -133,7 +134,8 @@ function makeGamesChart(participantData) {
             indexLabelLineColor: "darkgrey",
             indexLabelPlacement: "outside",
             type: "pie",
-            showInLegend: false,
+            showInLegend: true,
+            legendText:"{indexLabel}",
             toolTipContent: "<strong>#percent%</strong>",
             dataPoints: participantData
         }]
