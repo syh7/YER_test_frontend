@@ -38,10 +38,22 @@ function load() {
         localStorage.setItem("participant", this.response);
         console.log("Participant= " + localStorage.getItem("participant"));
         document.getElementById("name").innerHTML = participant.firstName + " " + participant.lastName;
-        requestEnrolledTournaments();
-        requestGameStatistics();
+        fillPersonalData();
     };
     req.send();
+}
+
+function fillPersonalData() {
+        let h4 = document.createElement("h4");
+    if (participant.enrolments[0] != undefined) {
+        h4.innerHTML = "Enroled tournaments"
+        enroledTournamentContainer.appendChild(h4);
+        requestEnrolledTournaments();
+        requestGameStatistics();
+    } else {
+        h4.innerHTML = "You have not enroled in any tournaments yet. Go have some fun!"
+        enroledTournamentContainer.appendChild(h4);
+    }
 }
 
 function requestEnrolledTournaments() {
@@ -92,7 +104,10 @@ function requestGameStatistics() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/results", true);
     req.onload = function () {
-        makeGamesChart(parseStatistics(JSON.parse(this.response)));
+        let parsedResponse = JSON.parse(this.response);
+        if (parsedResponse[0] > 0) { //er is data
+            makeGamesChart(parseStatistics(parsedResponse));
+        }
     }
     req.send();
 }
@@ -134,12 +149,12 @@ function editUser() {
 //Redirect to tournament page
 function openTournament(tournamentId) {
     console.log("In function, id=: " + tournamentId);
-    window.location.href = 'tournament/tournament.html?id=' + tournamentId;
+    window.location.href = '../tournament/tournament.html?id=' + tournamentId;
 }
 
-function logout(){
+function logout() {
     let b = confirm("Are you sure you want to logout?");
-    if(b){
+    if (b) {
         alert("You have logged out.");
         window.location.href = "../index/index.html";
     }
