@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>New User</title>
+    <title>New Participant</title>
     <link rel="stylesheet" src="index.css">
     <script src="../config.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -11,37 +11,94 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back </a></li>
+                <li onclick="goSignIn()" id="backBtn"><a href="#"><span class="glyphicon glyphicon-arrow-left"> Back</span></a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="inputDiv">
-        Email: <input type="text" id="email" required> <br>
-        Password: <input type="password" id="password" required> <br>
-        Confirm Password: <input type="password" id="passwordConfirm" required> <br>
-        First name: <input type="text" id="firstName" required> <br>
-        Last name: <input type="text" id="lastName" required> <br>
-        Date of birth: <input type="date" id="dateOfBirth" required> <br>
-        Player level: <select id="playerLevel">
-            <option value="9"> 9e divisie </option>
-            <option value="8"> 8e divisie </option>
-            <option value="7"> 7e divisie </option>
-            <option value="6"> 6e divisie </option>
-            <option value="5"> 5e divisie </option>
-            <option value="4"> 4e divisie </option>
-            <option value="3"> 3e divisie </option>
-            <option value="2"> 2e divisie </option>
-            <option value="1"> 1e divisie </option>
-            <option value="0"> Ere-divisie </option>
-        </select> <br>
-        League number: <input type="text" id="leagueNumber" required> <br>
-        <p><input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female<br></p>
-        <button type="button" id="newUser" onclick="newParticipant()">Submit</button>
+    <div id="container">
+        <h3 class="col-sm-offset-2">Enter your information</h3>
+        <form class="form-horizontal" onsubmit="return false">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="password">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                    <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="passwordConfirm">Confirm password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
+                        required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstName">First name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                    <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastName">Last name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="dateofBirth">Date of birth:</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="dateOfBirth" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="playerLevel">Playerlevel:</label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="playerLevel">
+                        <option value="9"> 9e divisie </option>
+                        <option value="8"> 8e divisie </option>
+                        <option value="7"> 7e divisie </option>
+                        <option value="6"> 6e divisie </option>
+                        <option value="5"> 5e divisie </option>
+                        <option value="4"> 4e divisie </option>
+                        <option value="3"> 3e divisie </option>
+                        <option value="2"> 2e divisie </option>
+                        <option value="1"> 1e divisie </option>
+                        <option value="0"> Ere-divisie </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="leagueNumber">League number:</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="leagueNumber" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check form-check-inline col-sm-offset-2">
+                    <input type="radio" name="gender" value="male" class="form-check-input" id="genderMale">
+                    <label class="form-check-label" for="genderMale">Male</label>
+                    <input type="radio" name="gender" value="female" class="form-check-input" id="genderFemale">
+                    <label class="form-check-label" for="genderFemale">Female</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn" id="newParticipantBtn" onclick="newParticipant()">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 </body>

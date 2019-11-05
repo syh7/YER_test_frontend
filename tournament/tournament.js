@@ -15,15 +15,80 @@ function load() {
         localStorage.setItem("tournament", this.response);
         console.log(localStorage.getItem("tournament"));
         document.getElementById("tournamentName").innerHTML = tournament.name;
-        document.getElementById("info").innerHTML = tournament.description;
+        document.getElementById("description").innerHTML = tournament.description;
+        setPhaseDiv();
     };
     req.send();
+}
+
+/* Sets tournament phase dependant on tournament dates
+*/
+function setPhaseDiv(){
+    let phaseDiv = document.getElementById("phaseDiv");
+    let currentDate = new Date();
+    if(new Date(tournament.enrolDate) > currentDate){ //enroldate not yet then enrolment phase
+        phaseDiv.innerHTML = "Enrolments are open.";
+        phaseDiv.classList.add("enrolment");
+        phaseDiv.onclick = function(){
+            enrol();
+        }
+        phaseDiv.style.cursor = "pointer";
+    } else if(new Date(tournament.startDate) > currentDate){ //enroldate passed, not started yet
+        phaseDiv.innerHTML = "Enrolments are closed.";
+    } else if(new Date(tournament.endDate) > currentDate){ //started, not finished yet
+        phaseDiv.innerHTML = "Tournament has started.";
+        phaseDiv.classList.add("started");
+    } else { //finished
+        phaseDiv.innerHTML = "Tournament has finished.";
+    }
 }
 
 /* Redirect to enrolment page
 */
 function enrol() {
     console.log("In enrol(): " + tournament.id);
-    //window.localStorage.setItem("tournament", tournament);
     window.location.href = "../enrolment/enrolment.html";
+}
+
+/* If participant, goes to participant/participant. Otherwise checks if admin, then goes to admin/admin.
+    Otherwise, gives error that you're not logged in.
+*/
+function goHome(){
+    let participant = localStorage.getItem("participant");
+    if(participant !== null){
+        window.location.href = "../participant/participant.html?id=" + participant.id;
+    } else {
+        let admin = localStorage.getItem("admin");
+        if(admin !== null){
+            window.location.href = "../admin/admin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
+
+function goBack(){
+    window.history.back();
+}
+
+function editUser(){
+    let participant = JSON.parse(localStorage.getItem("participant"));
+    if(participant !== null){
+        window.location.href = "../newparticipant/newparticipant.html?id=" + participant.id;
+    } else {
+        let admin = JSON.parse(localStorage.getItem("admin"));
+        if(admin !== null){
+            window.location.href = "../newadmin/newadmin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
+
+function logout() {
+    let b = confirm("Are you sure you want to logout?");
+    if (b) {
+        alert("You have logged out.");
+        window.location.href = "../index/index.html";
+    }
 }

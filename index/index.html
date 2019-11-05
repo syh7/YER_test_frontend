@@ -1,21 +1,41 @@
 <html>
 
 <head>
-    <title>Index</title>
-    <link rel="stylesheet" src="index.css">
+    <title>Sign in</title>
     <script src="../config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div id="main">
-        Email: <input type="text" id="userName"> <br>
-        Password: <input type="password" id="password"> <br>
-        <button id="showTablesBtn" onclick="signIn()">SIGN IN</button> <br>
-        <button id="newUser" onclick="newParticipant()">NEW USER</button>
-        <button id="newAdmin" onclick="newAdmin()">NEW ADMIN</button>
+    <navbar class="navbar navbar-default"></navbar> <!--EMPTY NAVBAR FOR PADDING-->
+    <div class="container">
+        <h3 class="col-sm-offset-2">Sign in</h3>
+        <form class="form-horizontal" onsubmit="return false">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="userName" placeholder="Enter email"> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="password">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"> <br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button onclick="signIn()" id="showTablesBtn" class="btn">SIGN IN</button> <br>
+                </div>
+            </div>
+
+            <br><br><br><br>
+            <button id="newParticipant" onclick="newParticipant()" class="btn">NEW PARTICIPANT</button>
+            <button id="newAdmin" onclick="newAdmin()" class="btn">NEW ADMIN</button>
+        </form>
     </div>
 </body>
 

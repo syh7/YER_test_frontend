@@ -10,21 +10,52 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back </a></li>
+                <li onclick="goBack()"><a href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back </a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="inputDiv">
-        Name: <input type="text" id="name" required> <br>
-        Email: <input type="text" id="email" required> <br>
-        Password: <input type="password" id="password" required> <br>
-        Confirm Password: <input type="password" id="passwordConfirm" required> <br>
-        <button type="button" id="newUser" onclick="newAdmin()">Submit</button>
-    </div>
+    <div id="container">
+        <h3 class="col-sm-offset-2">Enter your information</h3>
+        <form class="form-horizontal" onsubmit="return false">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Name:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="name" placeholder="Enter the name of your organisation"
+                        required>
+                    <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" required> <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="password">Password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                    <br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="passwordConfirm">Confirm password:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
+                        required> <br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn" id="newAdminBTN" onclick="newAdmin()">Submit</button>
+                </div>
+            </div>
+        </form>
 
 </body>
 

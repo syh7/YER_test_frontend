@@ -1,5 +1,5 @@
-let tournamentDiv = document.getElementById("tournaments");
-let enrolledTournamentsDiv = document.getElementById("enrolledTournaments");
+let searchTournamentContainer = document.getElementById("searchTournamentContainer");
+let enroledTournamentContainer = document.getElementById("enroledTournamentContainer");
 let chartDiv = document.getElementById("pieChart");
 let tournaments;
 let participant = {};
@@ -17,10 +17,10 @@ function searchTournament() {
         if (this.readyState == 4 && this.status == 200) {
             tournaments = JSON.parse(req.responseText);
             console.log("Tournaments: " + tournaments);
-            if (tournamentDiv.hasChildNodes()) {
-                tournamentDiv.removeChild(tournamentDiv.children[0]);
+            if (searchTournamentContainer.hasChildNodes()) {
+                searchTournamentContainer.removeChild(searchTournamentContainer.children[0]);
             }
-            makeTournamentTable(tournaments, tournamentDiv);
+            makeTournamentTable(tournaments, searchTournamentContainer);
         }
     }
     req.open("GET", serverIP + "tournaments/?mode=contains&search=" + search, true);
@@ -38,23 +38,36 @@ function load() {
         localStorage.setItem("participant", this.response);
         console.log("Participant= " + localStorage.getItem("participant"));
         document.getElementById("name").innerHTML = participant.firstName + " " + participant.lastName;
-        requestEnrolledTournaments();
-        requestGameStatistics();
+        fillPersonalData();
     };
     req.send();
+}
+
+function fillPersonalData() {
+        let h4 = document.createElement("h4");
+    if (participant.enrolments[0] != undefined) {
+        h4.innerHTML = "Enroled tournaments"
+        enroledTournamentContainer.appendChild(h4);
+        requestEnrolledTournaments();
+        requestGameStatistics();
+    } else {
+        h4.innerHTML = "You have not enroled in any tournaments yet. Go have some fun!"
+        enroledTournamentContainer.appendChild(h4);
+    }
 }
 
 function requestEnrolledTournaments() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/tournaments", true);
     req.onload = function () {
-        makeTournamentTable(JSON.parse(this.response), enrolledTournamentsDiv);
+        makeTournamentTable(JSON.parse(this.response), enroledTournamentContainer);
     }
     req.send();
 }
 
 function makeTournamentTable(tournaments, tourDiv) {
     let table = document.createElement("table");
+    table.classList.add("table", ".table-striped", ".table-bordered");
     //Build headers
     var header = table.createTHead();
     row = header.insertRow(0);
@@ -91,7 +104,10 @@ function requestGameStatistics() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/results", true);
     req.onload = function () {
-        makeGamesChart(parseStatistics(JSON.parse(this.response)));
+        let parsedResponse = JSON.parse(this.response);
+        if (parsedResponse[0] > 0) { //er is data
+            makeGamesChart(parseStatistics(parsedResponse));
+        }
     }
     req.send();
 }
@@ -127,11 +143,19 @@ function makeGamesChart(participantData) {
 
 //Redirect to newUser page
 function editUser() {
-    window.location.href = 'newUser/newUser.html?id=' + participant.id;
+    window.location.href = '../newparticipant/newparticipant.html?id=' + participant.id;
 }
 
 //Redirect to tournament page
 function openTournament(tournamentId) {
     console.log("In function, id=: " + tournamentId);
     window.location.href = '../tournament/tournament.html?id=' + tournamentId;
+}
+
+function logout() {
+    let b = confirm("Are you sure you want to logout?");
+    if (b) {
+        alert("You have logged out.");
+        window.location.href = "../index/index.html";
+    }
 }
