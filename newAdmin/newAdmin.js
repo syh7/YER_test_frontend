@@ -24,7 +24,7 @@ function onLoad() {
 /*Post a new Admin to the backend, also saves admindata locally
 */
 function newAdmin() {
-    if (checkPassword()) {
+    if (checkPassword() && checkNotNull()) {
         let req = new XMLHttpRequest();
         req.open("POST", serverIP + "admins", true);
         //req.responseType = "json";
@@ -36,9 +36,6 @@ function newAdmin() {
         }
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
-
-    } else {
-        alert("Passwords do not matchTEST");
     }
 }
 
@@ -81,8 +78,22 @@ function checkPassword() {
     if (document.getElementById("password").value == document.getElementById("passwordConfirm").value) {
         return true;
     } else {
+        alert("Passwords do not match.");
         return false;
     }
+}
+
+/*Check input is not null
+*/
+function checkNotNull(){
+    if(document.getElementById("email").value === "" || document.getElementById("password").value === ""
+        || document.getElementById("firstName").value === "" || document.getElementById("lastName").value === ""
+        || document.getElementById("playerLevel").value === "" || document.getElementById("dateOfBirth").value === ""
+        || document.getElementById("leagueNumber").value === ""){
+        alert("Please fill in all the fields.")
+        return false;
+    }
+    return true;
 }
 
 /*Updates the database with new admin data

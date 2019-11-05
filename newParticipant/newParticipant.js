@@ -24,7 +24,7 @@ function onLoad() {
 * participantdata locally
 */
 function newParticipant() {
-    if (checkPassword()) {
+    if (checkPassword() && checkLeagueNumber() && checkNotNull()) {
         let req = new XMLHttpRequest();
         console.log("URL = " + serverIP + "participants");
         req.open("POST", serverIP + "participants", true);
@@ -37,8 +37,6 @@ function newParticipant() {
         }
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(getUserInput()));
-    } else {
-        alert("Passwords do not match");
     }
 }
 
@@ -97,8 +95,32 @@ function checkPassword() {
     if (document.getElementById("password").value == document.getElementById("passwordConfirm").value) {
         return true;
     } else {
+        alert("Passwords do not match.");
         return false;
     }
+}
+
+/*Check input is not null
+*/
+function checkNotNull(){
+    if(document.getElementById("email").value === "" || document.getElementById("password").value === ""
+        || document.getElementById("firstName").value === "" || document.getElementById("lastName").value === ""
+        || document.getElementById("playerLevel").value === "" || document.getElementById("dateOfBirth").value === ""
+        || document.getElementById("leagueNumber").value === ""){
+        alert("Please fill in all the fields.")
+        return false;
+    }
+    return true;
+}
+
+/*Check league number is not 0
+*/
+function checkLeagueNumber(){
+    if(document.getElementById("leagueNumber").value === "0"){
+        alert("League number cannot be 0.");
+        return false;
+    }
+    return true;
 }
 
 /*Updates the database with new participant data
