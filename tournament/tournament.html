@@ -17,7 +17,8 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li onclick="goBack()"><a href="#"><span class="glyphicon glyphicon-arrow-left"> Back</span></a></li>
-                <li onclick="goHome()" style="cursor:pointer"><a><span class="glyphicon glyphicon-home"> Home</span></a></li>
+                <li onclick="goHome()" style="cursor:pointer"><a><span class="glyphicon glyphicon-home"> Home</span></a>
+                </li>
                 <li class="active"><a href="#">Information</a></li>
                 <li><a href="#">Enrolments</a></li>
                 <li><a href="#">Teams</a></li>
@@ -31,13 +32,15 @@
         </div>
     </nav>
 
-    <div id="container">
+    <div id="tournamentContainer" class="container">
         <h2 id="tournamentName"></h2>
-        <p id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-            quas nobis voluptatibus. Odit, necessitatibus veniam fugiat
-            voluptatibus libero quisquam reiciendis laborum numquam dignissimos
-            laboriosam molestiae tempora aliquam ad modi asperiores.</p>
         <div id="phaseDiv" class="phase"></div>
+        <div id="infoDiv">
+            <div id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                quas nobis voluptatibus. Odit, necessitatibus veniam fugiat
+                voluptatibus libero quisquam reiciendis laborum numquam dignissimos
+                laboriosam molestiae tempora aliquam ad modi asperiores.</div>
+        </div>
     </div>
 </body>
 

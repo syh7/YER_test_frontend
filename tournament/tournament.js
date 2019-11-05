@@ -29,10 +29,15 @@ function setPhaseDiv(){
     if(new Date(tournament.enrolDate) > currentDate){ //enroldate not yet then enrolment phase
         phaseDiv.innerHTML = "Enrolments are open.";
         phaseDiv.classList.add("enrolment");
-        phaseDiv.onclick = function(){
+
+        let button = document.createElement("button");
+        button.onclick = function(){
             enrol();
         }
-        phaseDiv.style.cursor = "pointer";
+        button.classList.add("btn");
+        button.innerHTML = "Enrol in tournament.";
+        document.getElementById("infoDiv").after(button);
+
     } else if(new Date(tournament.startDate) > currentDate){ //enroldate passed, not started yet
         phaseDiv.innerHTML = "Enrolments are closed.";
     } else if(new Date(tournament.endDate) > currentDate){ //started, not finished yet
