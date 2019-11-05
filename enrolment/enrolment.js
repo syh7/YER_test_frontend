@@ -3,7 +3,6 @@ let enrolment = {};
 let participant = {};
 let newEnrolmentWrapper = {};
 
-
 load()
 
 /* Load tournament and participant data
@@ -13,19 +12,13 @@ function load() {
     tournament = JSON.parse(localStorage.getItem("tournament"));
     participant = JSON.parse(localStorage.getItem("participant"));
     console.log(tournament);
-    console.log("Tournament.id: = " + tournament.id);
-    console.log("Participant.firstName = " + participant.firstName)
+    console.log(participant);
     document.getElementById("name").innerHTML = tournament.name;
     if (tournament.maxDisciplines > 1) {
-        console.log("Max Disciplines: " + tournament.maxDisciplines);
-
         for (let i = 1; i < tournament.maxDisciplines; i++) {
-            console.log("Building " + i + " clone");
             let disc = $("#disciplineRow1").clone();
-            console.log(disc);
             disc[0].id = "disciplineRow" + (i + 1);
             disc.appendTo($("#disciplineDiv"));
-            console.log($("#disciplineDiv"));
         }
     }
 }
@@ -45,18 +38,14 @@ function checkPartner(disciplineDropdown) {
     }
 }
 
-/* TODO
-*  Sends new enrolment to the backend 
+/* Sends new enrolment to the backend 
 */
 function submit() {
-    alert(participant.firstName + " " + participant.lastName + " has enrolled!")
     buildNewEnrolmentWrapper();
     let JSONnewEnrolmentWrapper = JSON.stringify(newEnrolmentWrapper);
     console.log(JSONnewEnrolmentWrapper);
     let req = new XMLHttpRequest();
-    console.log("URL = " + serverIP + "tournaments/" + tournament.id + "/enrol");
     req.open("POST", serverIP + "tournaments/" + tournament.id + "/enrol", true);
-    //req.responseType = "json";
     req.onload = function () {
         console.log(JSON.parse(this.responseText));
         alert(participant.firstName + " " + participant.lastName + " has enrolled.");
@@ -64,8 +53,6 @@ function submit() {
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSONnewEnrolmentWrapper);
 }
-    
-
 
 /*  Constructs the JSON file containing enrolmentDTOs
 */
@@ -77,7 +64,6 @@ function buildNewEnrolmentWrapper() {
         enrolmentDTO.participantIds = [3];
         let discipline = $("#disciplineRow" + i).children(".discipline")[0];
         if ($(discipline).val() != "DEFAULT") {
-
             enrolmentDTO.discipline = $(discipline).val();
             console.log(discipline);
             console.log(enrolmentDTO.discipline);
@@ -97,4 +83,47 @@ function buildNewEnrolmentWrapper() {
     }
     newEnrolmentWrapper.participantId = participant.id;
     newEnrolmentWrapper.enrolmentDTOs = enrolmentDTOs;
+}
+
+/* If participant, goes to participant/participant. Otherwise checks if admin, then goes to admin/admin.
+    Otherwise, gives error that you're not logged in.
+*/
+function goHome(){
+    let participant = JSON.parse(localStorage.getItem("participant"));
+    if(participant !== null){
+        window.location.href = "../participant/participant.html?id=" + participant.id;
+    } else {
+        let admin = JSON.parse(localStorage.getItem("admin"));
+        if(admin !== null){
+            window.location.href = "../admin/admin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
+
+function goBack(){
+    window.history.back();
+}
+
+function editUser(){
+    let participant = JSON.parse(localStorage.getItem("participant"));
+    if(participant !== null){
+        window.location.href = "../newparticipant/newparticipant.html?id=" + participant.id;
+    } else {
+        let admin = JSON.parse(localStorage.getItem("admin"));
+        if(admin !== null){
+            window.location.href = "../newadmin/newadmin.html?id=" + admin.id;
+        } else {
+            alert("Not logged in as participant or admin.");
+        }
+    }
+}
+
+function logout() {
+    let b = confirm("Are you sure you want to logout?");
+    if (b) {
+        alert("You have logged out.");
+        window.location.href = "../index/index.html";
+    }
 }
