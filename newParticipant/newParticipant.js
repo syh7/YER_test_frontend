@@ -14,8 +14,11 @@ function onLoad() {
         console.log(participant);
         loadUserInput();
         console.log("Participant= " + participant.firstName);
-        document.getElementById("newParticipant").onclick = function () {
+        document.getElementById("newParticipantBtn").onclick = function () {
             update();
+        };
+        document.getElementById("backBtn").onclick = function () {
+            goBack();
         };
     }
 }
@@ -126,7 +129,7 @@ function checkLeagueNumber(){
 /*Updates the database with new participant data
 */
 function update() {
-    if (checkPassword()) {
+    if (checkPassword() && checkLeagueNumber() && checkNotNull()) {
         let req = new XMLHttpRequest();
         req.open("PUT", serverIP + "participants/" + participant.id, true);
         //req.responseType = "json";
@@ -138,8 +141,6 @@ function update() {
         req.setRequestHeader("Content-Type", "application/json");
         participant = req.send(JSON.stringify(getUserInput()));
         localStorage.setItem("participant", participant);
-    } else {
-        alert("Passwords do not matchTEST");
     }
 }
 
@@ -151,5 +152,9 @@ function openUser(userId) {
 }
 
 function goBack(){
+    window.history.back();
+}
+
+function goSignIn(){
     window.location.href = "../index/index.html";
 }
