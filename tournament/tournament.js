@@ -83,11 +83,11 @@ function enrol() {
     Otherwise, gives error that you're not logged in.
 */
 function goHome(){
-    let participant = localStorage.getItem("participant");
+    let participant = JSON.parse(localStorage.getItem("participant"));
     if(participant !== null){
         window.location.href = "../participant/participant.html?id=" + participant.id;
     } else {
-        let admin = localStorage.getItem("admin");
+        let admin = JSON.parse(localStorage.getItem("admin"));
         if(admin !== null){
             window.location.href = "../admin/admin.html?id=" + admin.id;
         } else {
