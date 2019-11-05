@@ -151,5 +151,5 @@ function openUser(userId) {
 }
 
 function goBack(){
-    window.history.back();
+    window.location.href = "../index/index.html";
 }
