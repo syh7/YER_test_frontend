@@ -51,33 +51,37 @@ function submit() {
     buildJSON();
 }
 
-/*  Constructs the JSON file containing enrolmentDTO
+/*  Constructs the JSON file containing enrolmentDTOs
 */
 function buildJSON() {
-    let enrolments = [];
+    let enrolmentDTOs = [];
     for (let i = 1; i < tournament.maxDisciplines + 1; i++) {
-        let enrolment = {};
+        let enrolmentDTO = {};
+        enrolmentDTO.tournamentId = tournament.id;
+        enrolmentDTO.participantIds = [3];
         let discipline = $("#disciplineRow" + i).children(".discipline")[0];
         if ($(discipline).val() != "DEFAULT") {
             
-            enrolment.discipline = $(discipline).val();
+            enrolmentDTO.discipline = $(discipline).val();
             console.log(discipline);
-            //enrolment.discipline = $("#disciplineRow" + i).find(":selected").val();
-            console.log(enrolment.discipline);
+            console.log(enrolmentDTO.discipline);
             let level = $("#disciplineRow" + i).children(".playerLevel")[0];
-            enrolment.playerLevel = $(level).val();
-            console.log(enrolment.playerLevel);
+            enrolmentDTO.playerLevel = $(level).val();
+            console.log(enrolmentDTO.playerLevel);
             let partnerLeagueNumber = $("#disciplineRow" + i).children(".leagueNumber")[0];
             if (partnerLeagueNumber.disabled) {
-                enrolment.partnerLeagueNumber = 0;
+                enrolmentDTO.partnerLeagueNumber = 0;
             } else {
-                enrolment.partnerLeagueNumber = $(partnerLeagueNumber).val();
+                enrolmentDTO.partnerLeagueNumber = $(partnerLeagueNumber).val();
             }
-            console.log(enrolment.partnerLeagueNumber);
-            enrolments[i-1] = enrolment;
-            console.log(enrolments);
+            console.log(enrolmentDTO.partnerLeagueNumber);
+            enrolmentDTOs[i-1] = enrolmentDTO;
+            console.log(enrolmentDTOs);
         }
     }
-    let JSONenrolmentDTO = JSON.stringify(participant.id + enrolments);
-    console.log(JSONenrolmentDTO);
+    let newEnrolmentWrapper = {}
+    newEnrolmentWrapper.participantId = participant.id;
+    newEnrolmentWrapper.enrolmentDTOs = enrolmentDTOs;
+    let JSONnewEnrolmentWrapper = JSON.stringify(newEnrolmentWrapper);
+    console.log(JSONnewEnrolmentWrapper);
 }
