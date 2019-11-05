@@ -22,12 +22,12 @@ function load() {
 }
 
 function setInfoDiv(){
-    document.getElementById("levelsDiv").innerHTML = tournament.levels;
-    document.getElementById("locationDiv").innerHTML = tournament.location;
-    document.getElementById("disciplinesDiv").innerHTML = tournament.maxDisciplines;
+    document.getElementById("levelsDiv").innerHTML = "<b>Levels: </b>" + tournament.levels + "<b>.</b>";
+    document.getElementById("locationDiv").innerHTML = "<b>Location: </b>" + tournament.location + "<b>.</b>";
+    document.getElementById("disciplinesDiv").innerHTML = "<b>Maximum enrolments: </b>" + tournament.maxDisciplines + "<b>.</b>";
     setAdminName();
 
-    document.getElementById("refereeDiv").innerHTML = tournament.referee;
+    document.getElementById("refereeDiv").innerHTML = "<b>Referee: </b>" + tournament.referee + "<b>.</b>";
     document.getElementById("descriptionDiv").innerHTML = tournament.description;
 }
 
@@ -36,7 +36,7 @@ function setAdminName(){
     req.open("GET", serverIP + "admins/" + tournament.adminId, true);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function () {
-        document.getElementById("adminDiv").innerHTML = JSON.parse(this.response).name;
+        document.getElementById("adminDiv").innerHTML = "<b>Tournament organised by </b>" + JSON.parse(this.response).name + "<b>.</b>";
     };
     req.send();
 }
