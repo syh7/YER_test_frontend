@@ -1,6 +1,8 @@
 let tournament = {};
 let enrolment = {};
 let participant = {};
+let newEnrolmentWrapper = {};
+
 
 load()
 
@@ -48,12 +50,26 @@ function checkPartner(disciplineDropdown) {
 */
 function submit() {
     alert(participant.firstName + " " + participant.lastName + " has enrolled!")
-    buildJSON();
+    buildNewEnrolmentWrapper();
+    let JSONnewEnrolmentWrapper = JSON.stringify(newEnrolmentWrapper);
+    console.log(JSONnewEnrolmentWrapper);
+    let req = new XMLHttpRequest();
+    console.log("URL = " + serverIP + "tournaments/" + tournament.id + "/enrol");
+    req.open("POST", serverIP + "tournaments/" + tournament.id + "/enrol", true);
+    //req.responseType = "json";
+    req.onload = function () {
+        console.log(JSON.parse(this.responseText));
+        alert(participant.firstName + " " + participant.lastName + " has enrolled.");
+    }
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(JSONnewEnrolmentWrapper);
 }
+    
+
 
 /*  Constructs the JSON file containing enrolmentDTOs
 */
-function buildJSON() {
+function buildNewEnrolmentWrapper() {
     let enrolmentDTOs = [];
     for (let i = 1; i < tournament.maxDisciplines + 1; i++) {
         let enrolmentDTO = {};
@@ -61,7 +77,7 @@ function buildJSON() {
         enrolmentDTO.participantIds = [3];
         let discipline = $("#disciplineRow" + i).children(".discipline")[0];
         if ($(discipline).val() != "DEFAULT") {
-            
+
             enrolmentDTO.discipline = $(discipline).val();
             console.log(discipline);
             console.log(enrolmentDTO.discipline);
@@ -75,13 +91,10 @@ function buildJSON() {
                 enrolmentDTO.partnerLeagueNumber = $(partnerLeagueNumber).val();
             }
             console.log(enrolmentDTO.partnerLeagueNumber);
-            enrolmentDTOs[i-1] = enrolmentDTO;
+            enrolmentDTOs[i - 1] = enrolmentDTO;
             console.log(enrolmentDTOs);
         }
     }
-    let newEnrolmentWrapper = {}
     newEnrolmentWrapper.participantId = participant.id;
     newEnrolmentWrapper.enrolmentDTOs = enrolmentDTOs;
-    let JSONnewEnrolmentWrapper = JSON.stringify(newEnrolmentWrapper);
-    console.log(JSONnewEnrolmentWrapper);
 }
