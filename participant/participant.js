@@ -1,5 +1,5 @@
 let searchTournamentContainer = document.getElementById("searchTournamentContainer");
-let enroledTournamentContainer = document.getElementById("enroledTournamentContainer");
+let enrolledTournamentContainer = document.getElementById("enrolledTournamentContainer");
 let chartDiv = document.getElementById("pieChart");
 let tournaments;
 let participant = {};
@@ -46,13 +46,13 @@ function load() {
 function fillPersonalData() {
         let h4 = document.createElement("h4");
     if (participant.enrolments[0] != undefined) {
-        h4.innerHTML = "Enroled tournaments"
-        enroledTournamentContainer.appendChild(h4);
+        h4.innerHTML = "Enrolled tournaments"
+        enrolledTournamentContainer.appendChild(h4);
         requestEnrolledTournaments();
         requestGameStatistics();
     } else {
-        h4.innerHTML = "You have not enroled in any tournaments yet. Go have some fun!"
-        enroledTournamentContainer.appendChild(h4);
+        h4.innerHTML = "You have not enrolled in any tournaments yet. Go have some fun!"
+        enrolledTournamentContainer.appendChild(h4);
     }
 }
 
@@ -60,7 +60,7 @@ function requestEnrolledTournaments() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "participants/" + participant.id + "/tournaments", true);
     req.onload = function () {
-        makeTournamentTable(JSON.parse(this.response), enroledTournamentContainer);
+        makeTournamentTable(JSON.parse(this.response), enrolledTournamentContainer);
     }
     req.send();
 }
