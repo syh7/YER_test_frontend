@@ -13,3 +13,7 @@ function newParticipant(){
 function newAdmin(){
     window.location.href = "newAdmin/newAdmin.html";
 }
+
+function goToAngular(){
+    window.location.href = "http://localhost:4200/";
+}
