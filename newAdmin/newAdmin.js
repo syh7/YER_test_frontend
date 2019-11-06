@@ -80,11 +80,11 @@ function checkPassword() {
 
 /*Check input is not null
 */
-function checkNotNull(){
-    if(document.getElementById("email").value === "" || document.getElementById("password").value === ""
+function checkNotNull() {
+    if (document.getElementById("email").value === "" || document.getElementById("password").value === ""
         || document.getElementById("firstName").value === "" || document.getElementById("lastName").value === ""
         || document.getElementById("playerLevel").value === "" || document.getElementById("dateOfBirth").value === ""
-        || document.getElementById("leagueNumber").value === ""){
+        || document.getElementById("leagueNumber").value === "") {
         alert("Please fill in all the fields.")
         return false;
     }
@@ -114,10 +114,10 @@ function openUser(userId) {
     window.location.href = '../admin/admin.html?id=' + userId;
 }
 
-function goBack(){
+function goBack() {
     window.history.back();
 }
 
-function goSignIn(){
+function goSignIn() {
     window.location.href = "../index.html";
 }

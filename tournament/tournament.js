@@ -20,7 +20,7 @@ function load() {
     req.send();
 }
 
-function setInfoDiv(){
+function setInfoDiv() {
     document.getElementById("tournamentName").innerHTML = tournament.name;
     setAdminName();
 
@@ -35,7 +35,7 @@ function setInfoDiv(){
     document.getElementById("descriptionDiv").innerHTML = tournament.description;
 }
 
-function setAdminName(){
+function setAdminName() {
     let req = new XMLHttpRequest();
     req.open("GET", serverIP + "admins/" + tournament.adminId, true);
     req.setRequestHeader("Content-type", "application/json");
@@ -47,24 +47,24 @@ function setAdminName(){
 
 /* Sets tournament phase dependant on tournament dates
 */
-function setPhaseDiv(){
+function setPhaseDiv() {
     let phaseDiv = document.getElementById("phaseDiv");
     let currentDate = new Date();
-    if(new Date(tournament.enrolDate) > currentDate){ //enroldate not yet then enrolment phase
+    if (new Date(tournament.enrolDate) > currentDate) { //enroldate not yet then enrolment phase
         phaseDiv.innerHTML = "Enrolments are open.";
         phaseDiv.classList.add("enrolment");
 
         let button = document.createElement("button");
-        button.onclick = function(){
+        button.onclick = function () {
             enrol();
         }
         button.classList.add("btn");
         button.innerHTML = "Enrol in tournament.";
         document.getElementById("infoDiv").after(button);
 
-    } else if(new Date(tournament.startDate) > currentDate){ //enroldate passed, not started yet
+    } else if (new Date(tournament.startDate) > currentDate) { //enroldate passed, not started yet
         phaseDiv.innerHTML = "Enrolments are closed.";
-    } else if(new Date(tournament.endDate) > currentDate){ //started, not finished yet
+    } else if (new Date(tournament.endDate) > currentDate) { //started, not finished yet
         phaseDiv.innerHTML = "Tournament has started.";
         phaseDiv.classList.add("started");
     } else { //finished
@@ -82,13 +82,13 @@ function enrol() {
 /* If participant, goes to participant/participant. Otherwise checks if admin, then goes to admin/admin.
     Otherwise, gives error that you're not logged in.
 */
-function goHome(){
+function goHome() {
     let participant = JSON.parse(localStorage.getItem("participant"));
-    if(participant !== null){
+    if (participant !== null) {
         window.location.href = "../participant/participant.html?id=" + participant.id;
     } else {
         let admin = JSON.parse(localStorage.getItem("admin"));
-        if(admin !== null){
+        if (admin !== null) {
             window.location.href = "../admin/admin.html?id=" + admin.id;
         } else {
             alert("Not logged in as participant or admin.");
@@ -96,17 +96,17 @@ function goHome(){
     }
 }
 
-function goBack(){
+function goBack() {
     window.history.back();
 }
 
-function editUser(){
+function editUser() {
     let participant = JSON.parse(localStorage.getItem("participant"));
-    if(participant !== null){
+    if (participant !== null) {
         window.location.href = "../newparticipant/newparticipant.html?id=" + participant.id;
     } else {
         let admin = JSON.parse(localStorage.getItem("admin"));
-        if(admin !== null){
+        if (admin !== null) {
             window.location.href = "../newadmin/newadmin.html?id=" + admin.id;
         } else {
             alert("Not logged in as participant or admin.");

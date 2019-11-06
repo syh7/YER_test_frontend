@@ -42,7 +42,7 @@ function load() {
 }
 
 function fillPersonalData() {
-        let h4 = document.createElement("h4");
+    let h4 = document.createElement("h4");
     if (participant.enrolments[0] != undefined) {
         h4.innerHTML = "Enrolled tournaments"
         enrolledTournamentContainer.appendChild(h4);
@@ -75,8 +75,8 @@ function makeTournamentTable(tournaments, tourDiv) {
     row.insertCell(3).innerHTML = "<b>End Date<b> &#x2193;";
     row.insertCell(4).innerHTML = "<b>Enrol Date</b> &#x2193;";
 
-    for(let i = 0; i < row.cells.length; i++){
-        row.cells[i].onclick = function(){
+    for (let i = 0; i < row.cells.length; i++) {
+        row.cells[i].onclick = function () {
             sortTable(table, i);
         }
     }
@@ -136,7 +136,7 @@ function requestGameStatistics() {
     req.open("GET", serverIP + "participants/" + participant.id + "/results", true);
     req.onload = function () {
         let parsedResponse = JSON.parse(this.response);
-        if (parsedResponse[0] > 0) { 
+        if (parsedResponse[0] > 0) {
             makeGamesChart(parseStatistics(parsedResponse));
         }
     }
@@ -166,7 +166,7 @@ function makeGamesChart(participantData) {
             indexLabelPlacement: "outside",
             type: "pie",
             showInLegend: true,
-            legendText:"{indexLabel}",
+            legendText: "{indexLabel}",
             toolTipContent: "<strong>#percent%</strong>",
             dataPoints: participantData
         }]
