@@ -9,8 +9,11 @@
 </head>
 
 <body>
-    <navbar class="navbar navbar-default"></navbar> <!--EMPTY NAVBAR FOR PADDING-->
-    <div class="container">
+
+    <navbar class="navbar navbar-default"></navbar>    <!--EMPTY NAVBAR FOR PADDING-->
+    <div class="container col-sm-8 col-sm-offset-2">
+        <button id="angularBtn" onclick="goToAngular()" class="alert alert-danger offset-md-2"
+            style="position: relative; left: 380px;"><a class="alert-link">Angular</a></button>
         <h3 class="col-sm-offset-2">Sign in</h3>
         <form class="form-horizontal" onsubmit="return false">
             <div class="form-group">
@@ -35,6 +38,7 @@
             <br><br><br><br>
             <button id="newParticipantBtn" onclick="newParticipant()" class="btn">NEW PARTICIPANT</button>
             <button id="newAdminBtn" onclick="newAdmin()" class="btn">NEW ADMIN</button>
+
         </form>
     </div>
 </body>
