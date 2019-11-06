@@ -15,7 +15,8 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+                <li onclick="goBack()"><a href="#"><span class="glyphicon glyphicon-arrow-left"> Back</span></a></li>
+                <li onclick="goHome()"><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li onclick="editUser()"><a href="#"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
@@ -25,9 +26,9 @@
     </nav>
 
     <div id="container" class="col-sm-offset-2">
-        <h3 id="name" ></h3>
+        <h3 id="name"></h3>
         <form class="form-horizontal" onsubmit="return false">
-            <div id="disciplineDiv" >
+            <div id="disciplineDiv">
                 <p id="disciplineRow1" class="form-group disciplines">
                     <select class="discipline col-sm-2" id="disciplineSelect1" oninput="checkPartner(this)">
                         <option value="DEFAULT" class="defaultDiscipline">------------</option>
