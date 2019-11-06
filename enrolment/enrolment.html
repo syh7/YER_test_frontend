@@ -10,37 +10,58 @@
 </head>
 
 <body>
-    <div id="main">
-        <h3 id="name"></h3>
-        <div id="disciplineDiv">
-            <p class="disciplines" id="disciplineRow1">
-                <select class="discipline" id="disciplineSelect1" oninput="checkPartner(this)">
-                    <option value="DEFAULT" class="defaultDiscipline">------------</option>
-                    <option value="MENSINGLES" class="men single">Men's Singles</option>
-                    <option value="MENDOUBLES" class="men double">Men's Doubles</option>
-                    <option value="WOMENSINGLES" class="women single">Women's Singles</option>
-                    <option value="WOMENDOUBLES" class="women double">Women's Doubles</option>
-                    <option value="MIXEDDOUBLES" class="double">Mixed Doubles</option>
-                </select>
 
-                <select class="playerLevel">
-                    <option value="9"> 9e divisie </option>
-                    <option value="8"> 8e divisie </option>
-                    <option value="7"> 7e divisie </option>
-                    <option value="6"> 6e divisie </option>
-                    <option value="5"> 5e divisie </option>
-                    <option value="4"> 4e divisie </option>
-                    <option value="3"> 3e divisie </option>
-                    <option value="2"> 2e divisie </option>
-                    <option value="1"> 1e divisie </option>
-                    <option value="0"> Ere-divisie </option>
-                </select>
-
-                <input class="leagueNumber" placeholder="league number partner">
-
-            </p>
+    <nav class="navbar navbar-default"></nav> <!-- DUMMY NAVBAR TO PREVENT NAVBAR BLOCKING-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li onclick="goBack()"><a href="#"><span class="glyphicon glyphicon-arrow-left"> Back</span></a></li>
+                <li onclick="goHome()"><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li onclick="editUser()"><a href="#"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
+                <li onclick="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
+            </ul>
         </div>
-        <button id="submitButton" onclick="submit()">Enrol</button> <br>
+    </nav>
+
+    <div id="container" class="col-sm-offset-2">
+        <h3 id="name"></h3>
+        <form class="form-horizontal" onsubmit="return false">
+            <div id="disciplineDiv">
+                <p id="disciplineRow1" class="form-group disciplines">
+                    <select class="discipline col-sm-2" id="disciplineSelect1" oninput="checkPartner(this)">
+                        <option value="DEFAULT" class="defaultDiscipline">------------</option>
+                        <option value="MENSINGLES" class="men single">Men's Singles</option>
+                        <option value="MENDOUBLES" class="men double">Men's Doubles</option>
+                        <option value="WOMENSINGLES" class="women single">Women's Singles</option>
+                        <option value="WOMENDOUBLES" class="women double">Women's Doubles</option>
+                        <option value="MIXEDDOUBLES" class="double">Mixed Doubles</option>
+                    </select>
+
+                    <select class="playerLevel col-sm-2">
+                        <option value="9"> 9e divisie </option>
+                        <option value="8"> 8e divisie </option>
+                        <option value="7"> 7e divisie </option>
+                        <option value="6"> 6e divisie </option>
+                        <option value="5"> 5e divisie </option>
+                        <option value="4"> 4e divisie </option>
+                        <option value="3"> 3e divisie </option>
+                        <option value="2"> 2e divisie </option>
+                        <option value="1"> 1e divisie </option>
+                        <option value="0"> Ere-divisie </option>
+                    </select>
+
+                    <input class="leagueNumber col-sm-3" placeholder="Enter your partners league number.">
+
+                </p>
+            </div>
+
+            <div class="form-group">
+                <button id="submitButton" class="btn" onclick="sendEnrolment()">Enrol</button>
+            </div>
+
+        </form>
     </div>
 </body>
 

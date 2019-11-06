@@ -11,9 +11,7 @@ function onLoad() {
         console.log("No user");
     } else {
         getParticipant();
-        console.log(participant);
         loadUserInput();
-        console.log("Participant= " + participant.firstName);
         document.getElementById("newParticipantBtn").onclick = function () {
             update();
         };
@@ -31,9 +29,7 @@ function newParticipant() {
         let req = new XMLHttpRequest();
         console.log("URL = " + serverIP + "participants");
         req.open("POST", serverIP + "participants", true);
-        //req.responseType = "json";
         req.onload = function () {
-            console.log(JSON.parse(this.responseText).id);
             localStorage.setItem("participant", participant);
             alert(participant.firstName + " " + participant.lastName + " aangemaakt");
             openUser(JSON.parse(this.responseText).id);
@@ -50,9 +46,7 @@ function getParticipant() {
     req.open("GET", serverIP + "participants/" + urlId, false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function () {
-        participant = JSON.parse(this.response);
         localStorage.setItem("participant", this.response);
-        console.log(JSON.parse(localStorage.getItem("participant")));
     };
     req.send();
 }
@@ -69,7 +63,6 @@ function getUserInput() {
     participant.leagueNumber = document.getElementById("leagueNumber").value;
     let gender = $("input[type='radio'][name='gender']:checked").val();
     participant.male = gender == "male";
-    console.log(JSON.stringify(participant));
     return participant;
 }
 
@@ -84,7 +77,6 @@ function loadUserInput() {
     document.getElementById("playerLevel").value = participant.playerLevel;
     document.getElementById("dateOfBirth").value = participant.dateOfBirth;
     document.getElementById("leagueNumber").value = participant.leagueNumber;
-    console.log(participant.male);
     if (participant.male == true) {
         $("input[type='radio'][value='male']").attr("checked", true);
     } else {
@@ -132,11 +124,8 @@ function update() {
     if (checkPassword() && checkLeagueNumber() && checkNotNull()) {
         let req = new XMLHttpRequest();
         req.open("PUT", serverIP + "participants/" + participant.id, true);
-        //req.responseType = "json";
         req.onload = function () {
-            console.log(JSON.parse(this.responseText).id);
             alert("User updated");
-            openUser(JSON.parse(this.responseText).id);
         }
         req.setRequestHeader("Content-Type", "application/json");
         participant = req.send(JSON.stringify(getUserInput()));
@@ -147,7 +136,6 @@ function update() {
 /*Redirect to participant page
 */
 function openUser(userId) {
-    console.log("In openUser(): " + userId);
     window.location.href = '../participant/participant.html?id=' + userId;
 }
 

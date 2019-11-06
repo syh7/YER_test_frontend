@@ -17,7 +17,8 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav">
                 <li onclick="goBack()"><a href="#"><span class="glyphicon glyphicon-arrow-left"> Back</span></a></li>
-                <li onclick="goHome()" style="cursor:pointer"><a><span class="glyphicon glyphicon-home"> Home</span></a></li>
+                <li onclick="goHome()" style="cursor:pointer"><a><span class="glyphicon glyphicon-home"> Home</span></a>
+                </li>
                 <li class="active"><a href="#">Information</a></li>
                 <li><a href="#">Enrolments</a></li>
                 <li><a href="#">Teams</a></li>
@@ -31,13 +32,29 @@
         </div>
     </nav>
 
-    <div id="container">
-        <h2 id="tournamentName"></h2>
-        <p id="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-            quas nobis voluptatibus. Odit, necessitatibus veniam fugiat
-            voluptatibus libero quisquam reiciendis laborum numquam dignissimos
-            laboriosam molestiae tempora aliquam ad modi asperiores.</p>
+    <div id="tournamentContainer" class="container">
+        <h1 id="tournamentName"></h1>
+        <h3 id="adminDiv"></h3>
         <div id="phaseDiv" class="phase"></div>
+        <div id="infoDiv">
+            <div class="row">
+                <div id="enrolDateDiv" class="col-sm-2"></div>
+                <div id="playDatesDiv" class="col-sm-4"></div>
+            </div>
+            <div class="row">
+                <div id="locationDiv" class="col-sm-2"></div>
+                <div id="levelsDiv" class="col-sm-2"></div>
+                <div id="disciplinesDiv" class="col-sm-2"></div>
+                <div id="refereeDiv" class="col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div id="descriptionDiv" class="col-sm-9">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Ipsam quas nobis voluptatibus. Odit, necessitatibus veniam fugiat voluptatibus libero quisquam
+                    reiciendis laborum numquam dignissimos laboriosam molestiae tempora aliquam ad modi asperiores.
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

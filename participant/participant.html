@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Participant</title>
+    <script src="../config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default"></nav> <!-- DUMMY NAVBAR TO PREVENT NAVBAR BLOCKING-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="#"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li onclick="editUser()"><a href="#"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
+                <li onclick="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1 id="name" style="text-align: center;"></h1>
+    <div id="searchTournaments" class="col-sm-6" style="text-align: center;">
+        <input type="text" placeholder="Search tournaments..." id="searchbar">
+        <button id="searchButton" onclick="searchTournament()">Search</button> <br>
+        <div id="searchTournamentContainer"></div>
+    </div>
+
+    <div class="col-sm-6">
+        <div id="enroledTournamentContainer"></div>
+        <chart id="pieChart"></chart>
+    </div>
+
+</body>
+
+<script src="participant.js"></script>
+
+</html>

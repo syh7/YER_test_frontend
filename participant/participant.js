@@ -126,6 +126,7 @@ function makeGamesChart(participantData) {
             text: "Game statistics"
         },
         animationEnabled: true,
+        interactivityEnabled: false,
         data: [{
             indexLabelFontSize: 15,
             indexLabelFontFamily: "Monospace",
@@ -133,7 +134,8 @@ function makeGamesChart(participantData) {
             indexLabelLineColor: "darkgrey",
             indexLabelPlacement: "outside",
             type: "pie",
-            showInLegend: false,
+            showInLegend: true,
+            legendText:"{indexLabel}",
             toolTipContent: "<strong>#percent%</strong>",
             dataPoints: participantData
         }]
@@ -153,8 +155,7 @@ function openTournament(tournamentId) {
 }
 
 function logout() {
-    let b = confirm("Are you sure you want to logout?");
-    if (b) {
+    if (confirm("Are you sure you want to logout?")) {
         alert("You have logged out.");
         window.location.href = "../index/index.html";
     }
