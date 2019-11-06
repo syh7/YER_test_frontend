@@ -49,6 +49,7 @@ function sendEnrolment() {
     req.onload = function () {
         console.log(JSON.parse(this.responseText));
         alert(participant.firstName + " " + participant.lastName + " has enrolled.");
+        goHome();
     }
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSONnewEnrolmentWrapper);
