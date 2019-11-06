@@ -46,7 +46,9 @@ function getParticipant() {
     req.open("GET", serverIP + "participants/" + urlId, false);
     req.setRequestHeader("Content-type", "application/json");
     req.onload = function () {
-        localStorage.setItem("participant", this.response);
+        participant = JSON.parse(this.response);
+        console.log(participant);
+        localStorage.setItem("participant", participant);
     };
     req.send();
 }
