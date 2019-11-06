@@ -115,8 +115,7 @@ function editUser(){
 }
 
 function logout() {
-    let b = confirm("Are you sure you want to logout?");
-    if (b) {
+    if (confirm("Are you sure you want to logout?")) {
         alert("You have logged out.");
         window.location.href = "../index/index.html";
     }
