@@ -40,7 +40,7 @@ function checkPartner(disciplineDropdown) {
 
 /* Sends new enrolment to the backend 
 */
-function submit() {
+function sendEnrolment() {
     buildNewEnrolmentWrapper();
     let JSONnewEnrolmentWrapper = JSON.stringify(newEnrolmentWrapper);
     console.log(JSONnewEnrolmentWrapper);
