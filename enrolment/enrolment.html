@@ -24,13 +24,11 @@
         </div>
     </nav>
 
-    <div id="container">
-        <h3 id="name" class="col-sm-offset-2"></h3>
-
-        <form class="form-vertical" onsubmit="return false">
-            <div id="disciplineDiv" class="form-group col-md-12">
-
-                <p id="disciplineRow1" class="disciplines">
+    <div id="container" class="col-sm-offset-2">
+        <h3 id="name" ></h3>
+        <form class="form-horizontal" onsubmit="return false">
+            <div id="disciplineDiv" >
+                <p id="disciplineRow1" class="form-group disciplines">
                     <select class="discipline col-sm-2" id="disciplineSelect1" oninput="checkPartner(this)">
                         <option value="DEFAULT" class="defaultDiscipline">------------</option>
                         <option value="MENSINGLES" class="men single">Men's Singles</option>
@@ -53,7 +51,7 @@
                         <option value="0"> Ere-divisie </option>
                     </select>
 
-                    <input class="leagueNumber col-sm-2" placeholder="Enter your partners league number.">
+                    <input class="leagueNumber col-sm-3" placeholder="Enter your partners league number.">
 
                 </p>
             </div>
