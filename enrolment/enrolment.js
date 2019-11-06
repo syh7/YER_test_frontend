@@ -123,6 +123,6 @@ function editUser(){
 function logout() {
     if (confirm("Are you sure you want to logout?")) {
         alert("You have logged out.");
-        window.location.href = "../index/index.html";
+        window.location.href = "../index.html";
     }
 }

@@ -119,5 +119,5 @@ function goBack(){
 }
 
 function goSignIn(){
-    window.location.href = "../index/index.html";
+    window.location.href = "../index.html";
 }
