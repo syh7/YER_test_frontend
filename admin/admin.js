@@ -22,7 +22,7 @@ function load() {
 function requestTournaments() {
     let header = tournamentsTable.createTHead();
     row = header.insertRow(0);
-    row.insertCell(0).innerHTML = "<b>Tournament</b> &#x21e9;";
+    row.insertCell(0).innerHTML = "<b>Tournament</b>&#x2193;";
     row.insertCell(1).innerHTML = "<b>Player Levels</b> &#x2193;";
     row.insertCell(2).innerHTML = "<b>Start Date</b> &#x2193;";
     row.insertCell(3).innerHTML = "<b>End Date<b> &#x2193;";
