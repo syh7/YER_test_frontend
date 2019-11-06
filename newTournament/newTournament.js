@@ -1,3 +1,7 @@
+function newTournament(){
+    alert("Not implemented yet");
+}
+
 function goHome() {
     let admin = JSON.parse(localStorage.getItem("admin"));
     window.location.href = "../admin/admin.html?id=" + admin.id;
